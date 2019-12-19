@@ -1,9 +1,14 @@
 <?php
+declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Magento\Quote\Model\Quote\Address;
+
+use Magento\Framework\DataObject;
+use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
 
 /**
  * Class Total
@@ -13,8 +18,10 @@ namespace Magento\Quote\Model\Quote\Address;
  * @api
  * @since 100.0.2
  */
-class Total extends \Magento\Framework\DataObject
+class Total extends DataObject
 {
+    const PRICE_PRECISION = 4;
+
     /**
      * @var array
      */
@@ -28,7 +35,7 @@ class Total extends \Magento\Framework\DataObject
     /**
      * Serializer interface instance.
      *
-     * @var \Magento\Framework\Serialize\Serializer\Json
+     * @var JsonSerializer
      */
     private $serializer;
 
@@ -36,14 +43,13 @@ class Total extends \Magento\Framework\DataObject
      * Constructor
      *
      * @param array $data
-     * @param \Magento\Framework\Serialize\Serializer\Json|null $serializer
+     * @param JsonSerializer|null $serializer
      */
     public function __construct(
         array $data = [],
-        \Magento\Framework\Serialize\Serializer\Json $serializer = null
+        JsonSerializer $serializer = null
     ) {
-        $this->serializer = $serializer ?: \Magento\Framework\App\ObjectManager::getInstance()
-            ->get(\Magento\Framework\Serialize\Serializer\Json::class);
+        $this->serializer = $serializer;
         parent::__construct($data);
     }
 
@@ -54,17 +60,16 @@ class Total extends \Magento\Framework\DataObject
      * @param float $amount
      * @return $this
      */
-    public function setTotalAmount($code, $amount)
+    public function setTotalAmount(string $code, $amount): self
     {
-        $amount = is_float($amount) ? round($amount, 4) : $amount;
+        $amount = is_float($amount) ? round($amount, self::PRICE_PRECISION) : $amount;
 
         $this->totalAmounts[$code] = $amount;
         if ($code != 'subtotal') {
             $code = $code . '_amount';
         }
-        $this->setData($code, $amount);
 
-        return $this;
+        return $this->setData($code, $amount);
     }
 
     /**
@@ -74,17 +79,16 @@ class Total extends \Magento\Framework\DataObject
      * @param float $amount
      * @return $this
      */
-    public function setBaseTotalAmount($code, $amount)
+    public function setBaseTotalAmount(string $code, $amount): self
     {
-        $amount = is_float($amount) ? round($amount, 4) : $amount;
+        $amount = is_float($amount) ? round($amount, self::PRICE_PRECISION) : $amount;
 
         $this->baseTotalAmounts[$code] = $amount;
         if ($code != 'subtotal') {
             $code = $code . '_amount';
         }
-        $this->setData('base_' . $code, $amount);
 
-        return $this;
+        return $this->setData('base_' . $code, $amount);
     }
 
     /**
@@ -94,12 +98,11 @@ class Total extends \Magento\Framework\DataObject
      * @param float $amount
      * @return $this
      */
-    public function addTotalAmount($code, $amount)
+    public function addTotalAmount(string $code, $amount): self
     {
         $amount = $this->getTotalAmount($code) + $amount;
-        $this->setTotalAmount($code, $amount);
 
-        return $this;
+        return $this->setTotalAmount($code, $amount);
     }
 
     /**
@@ -109,21 +112,20 @@ class Total extends \Magento\Framework\DataObject
      * @param float $amount
      * @return $this
      */
-    public function addBaseTotalAmount($code, $amount)
+    public function addBaseTotalAmount(string $code, $amount): self
     {
         $amount = $this->getBaseTotalAmount($code) + $amount;
-        $this->setBaseTotalAmount($code, $amount);
 
-        return $this;
+        return $this->setBaseTotalAmount($code, $amount);
     }
 
     /**
      * Get total amount value by code
      *
-     * @param   string $code
+     * @param string $code
      * @return  float|int
      */
-    public function getTotalAmount($code)
+    public function getTotalAmount(string $code)
     {
         if (isset($this->totalAmounts[$code])) {
             return $this->totalAmounts[$code];
@@ -135,10 +137,10 @@ class Total extends \Magento\Framework\DataObject
     /**
      * Get total amount value by code in base store currency
      *
-     * @param   string $code
+     * @param string $code
      * @return  float|int
      */
-    public function getBaseTotalAmount($code)
+    public function getBaseTotalAmount(string $code)
     {
         if (isset($this->baseTotalAmounts[$code])) {
             return $this->baseTotalAmounts[$code];
@@ -154,7 +156,7 @@ class Total extends \Magento\Framework\DataObject
      *
      * @return array
      */
-    public function getAllTotalAmounts()
+    public function getAllTotalAmounts(): array
     {
         return $this->totalAmounts;
     }
@@ -164,7 +166,7 @@ class Total extends \Magento\Framework\DataObject
      *
      * @return array
      */
-    public function getAllBaseTotalAmounts()
+    public function getAllBaseTotalAmounts(): array
     {
         return $this->baseTotalAmounts;
     }
@@ -180,10 +182,9 @@ class Total extends \Magento\Framework\DataObject
      * @return $this
      * @since 100.1.0
      */
-    public function setFullInfo($info)
+    public function setFullInfo($info): self
     {
-        $this->setData('full_info', $info);
-        return $this;
+        return $this->setData('full_info', $info);
     }
 
     /**
@@ -192,12 +193,13 @@ class Total extends \Magento\Framework\DataObject
      * @return array
      * @since 100.1.0
      */
-    public function getFullInfo()
+    public function getFullInfo(): array
     {
         $fullInfo = $this->getData('full_info');
         if (is_string($fullInfo)) {
             $fullInfo = $this->serializer->unserialize($fullInfo);
         }
+
         return $fullInfo;
     }
 }
