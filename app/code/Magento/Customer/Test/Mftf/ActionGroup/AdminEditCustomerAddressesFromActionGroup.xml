@@ -9,7 +9,7 @@
 <actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
     <!-- Same as "EditCustomerAddressesFromAdminActionGroup" but taking country and state from input "customerAddress" -->
-    <actionGroup name="AdminEditCustomerAddressesFrom">
+    <actionGroup name="AdminEditCustomerAddressesFromActionGroup">
         <annotations>
             <description>Adds the provided Address to a Customer from the Admin Customers creation/edit page.</description>
         </annotations>
@@ -35,7 +35,7 @@
         <waitForPageLoad stepKey="waitForAddressSaved"/>
     </actionGroup>
 
-    <actionGroup name="AdminEditCustomerAddressSetDefaultShippingAndBilling" extends="AdminEditCustomerAddressesFrom">
+    <actionGroup name="AdminEditCustomerAddressSetDefaultShippingAndBillingActionGroup" extends="AdminEditCustomerAddressesFromActionGroup">
         <annotations>
             <description>EXTENDS: AdminEditCustomerAddressesFrom. Clicks on 'Set Default' for Billing/Shipping.</description>
         </annotations>
@@ -43,8 +43,8 @@
         <click selector="{{AdminEditCustomerAddressesSection.defaultBillingAddressButton}}" stepKey="setDefaultBilling" before="setDefaultShipping"/>
         <click selector="{{AdminEditCustomerAddressesSection.defaultShippingAddressButton}}" stepKey="setDefaultShipping" before="fillPrefixName"/>
     </actionGroup>
-    
-    <actionGroup name="AdminEditCustomerAddressNoZipNoState" extends="AdminEditCustomerAddressesFrom">
+
+    <actionGroup name="AdminEditCustomerAddressNoZipNoStateActionGroup" extends="AdminEditCustomerAddressesFromActionGroup">
         <annotations>
             <description>EXTENDS: AdminEditCustomerAddressesFrom. Removes 'selectState' and 'fillZipCode'. Clicks on 'Set Default' for Billing/Shipping.</description>
         </annotations>

@@ -22,9 +22,9 @@
         <amOnPage url="{{AdminCustomerPage.url}}" stepKey="goToCustomersPage"/>
         <click stepKey="addNewCustomer" selector="{{AdminCustomerGridMainActionsSection.addNewCustomer}}"/>
         <selectOption stepKey="selectWebSite" selector="{{AdminCustomerAccountInformationSection.associateToWebsite}}" userInput="{{website}}"/>
-        <fillField stepKey="FillFirstName" selector="{{AdminCustomerAccountInformationSection.firstName}}" userInput="{{customerData.firstname}}"/>
-        <fillField stepKey="FillLastName" selector="{{AdminCustomerAccountInformationSection.lastName}}" userInput="{{customerData.lastname}}"/>
-        <fillField stepKey="FillEmail" selector="{{AdminCustomerAccountInformationSection.email}}" userInput="{{customerData.email}}"/>
+        <fillField stepKey="fillFirstName" selector="{{AdminCustomerAccountInformationSection.firstName}}" userInput="{{customerData.firstname}}"/>
+        <fillField stepKey="fillLastName" selector="{{AdminCustomerAccountInformationSection.lastName}}" userInput="{{customerData.lastname}}"/>
+        <fillField stepKey="fillEmail" selector="{{AdminCustomerAccountInformationSection.email}}" userInput="{{customerData.email}}"/>
         <selectOption stepKey="selectStoreView" selector="{{AdminCustomerAccountInformationSection.storeView}}" userInput="{{storeView}}"/>
         <scrollToTopOfPage stepKey="scrollToTopOfThePage"/>
         <click stepKey="saveCustomer" selector="{{AdminCustomerAccountInformationSection.saveCustomerAndContinueEdit}}"/>
@@ -48,7 +48,7 @@
         <waitForPageLoad stepKey="waitForAddressSave"/>
     </actionGroup>
 
-    <actionGroup name="AdminCreateCustomerWithWebSiteAndGroup">
+    <actionGroup name="AdminCreateCustomerWithWebSiteAndGroupActionGroup">
         <annotations>
             <description>Goes to the Customer grid page. Click on 'Add New Customer'. Fills provided Customer Data. Fill provided Customer Address data. Assigns Product to Website and Store View. Clicks on Save.</description>
         </annotations>
@@ -62,9 +62,9 @@
         <click stepKey="addNewCustomer" selector="{{AdminCustomerGridMainActionsSection.addNewCustomer}}"/>
         <selectOption stepKey="selectWebSite" selector="{{AdminCustomerAccountInformationSection.associateToWebsite}}" userInput="{{website}}"/>
         <selectOption selector="{{AdminCustomerAccountInformationSection.group}}" userInput="{{customerData.group}}" stepKey="selectCustomerGroup"/>
-        <fillField stepKey="FillFirstName" selector="{{AdminCustomerAccountInformationSection.firstName}}" userInput="{{customerData.firstname}}"/>
-        <fillField stepKey="FillLastName" selector="{{AdminCustomerAccountInformationSection.lastName}}" userInput="{{customerData.lastname}}"/>
-        <fillField stepKey="FillEmail" selector="{{AdminCustomerAccountInformationSection.email}}" userInput="{{customerData.email}}"/>
+        <fillField stepKey="fillFirstName" selector="{{AdminCustomerAccountInformationSection.firstName}}" userInput="{{customerData.firstname}}"/>
+        <fillField stepKey="fillLastName" selector="{{AdminCustomerAccountInformationSection.lastName}}" userInput="{{customerData.lastname}}"/>
+        <fillField stepKey="fillEmail" selector="{{AdminCustomerAccountInformationSection.email}}" userInput="{{customerData.email}}"/>
         <selectOption stepKey="selectStoreView" selector="{{AdminCustomerAccountInformationSection.storeView}}" userInput="{{storeView}}"/>
         <waitForElement selector="{{AdminCustomerAccountInformationSection.storeView}}" stepKey="waitForCustomerStoreViewExpand"/>
         <click stepKey="save" selector="{{AdminCustomerAccountInformationSection.saveCustomer}}"/>

@@ -78,7 +78,7 @@
         <seeInCurrentUrl url="{{StorefrontCustomerDashboardPage.url}}" stepKey="seeAssertInCurrentUrl"/>
     </actionGroup>
 
-    <actionGroup name="EnterCustomerAddressInfo">
+    <actionGroup name="EnterCustomerAddressInfoActionGroup">
         <annotations>
             <description>Fills in the provided Customer details (First/Last Name, Company, Phone # and Address) on the Admin Customer creation/edit page. Clicks on the Save button.</description>
         </annotations>
@@ -102,7 +102,7 @@
     </actionGroup>
 
     <!-- Fills State Field instead of selecting it-->
-    <actionGroup name="EnterCustomerAddressInfoFillState" extends="EnterCustomerAddressInfo">
+    <actionGroup name="EnterCustomerAddressInfoFillStateActionGroup" extends="EnterCustomerAddressInfoActionGroup">
         <annotations>
             <description>EXTENDS: EnterCustomerAddressInfo. Fills the State field.</description>
         </annotations>
@@ -110,7 +110,7 @@
         <fillField stepKey="selectState" selector="{{StorefrontCustomerAddressSection.stateProvinceFill}}" userInput="{{Address.state}}"/>
     </actionGroup>
 
-    <actionGroup name="VerifyCustomerBillingAddress">
+    <actionGroup name="VerifyCustomerBillingAddressActionGroup">
         <annotations>
             <description>Goes to the Storefront Customer Dashboard Address area. Validates that the provided Customer Billing Address is present and correct on the Storefront Customer Dashboard Address section.</description>
         </annotations>
@@ -131,7 +131,7 @@
         <see selector="{{StorefrontCustomerAddressesSection.defaultBillingAddress}}" userInput="{{address.telephone}}" stepKey="seeAssertCustomerDefaultBillingAddressTelephone"/>
     </actionGroup>
 
-    <actionGroup name="VerifyCustomerShippingAddress">
+    <actionGroup name="VerifyCustomerShippingAddressActionGroup">
         <annotations>
             <description>Goes to the Storefront Customer Dashboard Address area. Validates that the provided Customer Shipping Address is present and correct.</description>
         </annotations>
@@ -151,7 +151,7 @@
         <see selector="{{StorefrontCustomerAddressesSection.defaultShippingAddress}}" userInput="{{address.telephone}}" stepKey="seeAssertCustomerDefaultShippingAddressTelephone"/>
     </actionGroup>
 
-    <actionGroup name="VerifyCustomerBillingAddressWithState">
+    <actionGroup name="VerifyCustomerBillingAddressWithStateActionGroup">
         <annotations>
             <description>Goes to the Storefront Customer Dashboard Address area. Validates that the provided Customer Billing Address, including the State, is present and correct.</description>
         </annotations>
@@ -172,7 +172,7 @@
         <see selector="{{StorefrontCustomerAddressesSection.defaultBillingAddress}}" userInput="{{address.telephone}}" stepKey="seeAssertCustomerDefaultBillingAddressTelephone"/>
     </actionGroup>
 
-    <actionGroup name="VerifyCustomerShippingAddressWithState">
+    <actionGroup name="VerifyCustomerShippingAddressWithStateActionGroup">
         <annotations>
             <description>Goes to the Storefront Customer Dashboard Address area. Validates that the provided Customer Shipping Address, including the State, is present and correct.</description>
         </annotations>
@@ -193,7 +193,7 @@
         <see selector="{{StorefrontCustomerAddressesSection.defaultShippingAddress}}" userInput="{{address.telephone}}" stepKey="seeAssertCustomerDefaultShippingAddressTelephone"/>
     </actionGroup>
 
-    <actionGroup name="VerifyCustomerNameOnFrontend">
+    <actionGroup name="VerifyCustomerNameOnFrontendActionGroup">
         <annotations>
             <description>Goes to the Storefront Customer Dashboard page. Validates that the Customer First/Last Name is present and correct.</description>
         </annotations>
