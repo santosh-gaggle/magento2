@@ -22,7 +22,7 @@
             <comment userInput="Enable config to generate category/product URL Rewrites" stepKey="commentEnableConfig" />
             <magentoCLI command="config:set catalog/seo/generate_category_product_rewrites 1" stepKey="enableGenerateUrlRewrite"/>
             <!--Flush cache-->
-            <magentoCLI command="cache:flush" stepKey="cleanCache1"/>
+            <magentoCLI command="cache:flush config" stepKey="cleanCache1"/>
 
             <actionGroup ref="LoginAsAdmin" stepKey="login"/>
             <createData entity="SimpleSubCategory" stepKey="createCategory"/>
@@ -38,7 +38,7 @@
             <comment userInput="Enable config to generate category/product URL Rewrites" stepKey="commentEnableConfig" />
             <magentoCLI command="config:set catalog/seo/generate_category_product_rewrites 1" stepKey="enableGenerateUrlRewrite"/>
             <!--Flush cache-->
-            <magentoCLI command="cache:flush" stepKey="cleanCache1"/>
+            <magentoCLI command="cache:flush config" stepKey="cleanCache1"/>
 
             <actionGroup ref="logout" stepKey="logout"/>
         </after>

@@ -128,8 +128,8 @@
 
             <!--Enable ElasticSearch as search engine.-->
            <magentoCLI command="config:set catalog/search/engine elasticsearch6" stepKey="enableElasticSearchAsSearchEngine"/>
+            <magentoCLI command="cache:flush config" stepKey="cleanCacheAfterElasticSearchEnable"/>
             <magentoCLI command="indexer:reindex" stepKey="performReindexAfterElasticSearchEnable"/>
-            <magentoCLI command="cache:flush" stepKey="cleanCacheAfterElasticSearchEnable"/>
 
         </before>
        <after>
@@ -169,8 +169,8 @@
 
           <!--Revert ElasticSearch as search engine.-->
            <actionGroup ref="ResetSearchEngineConfigurationActionGroup" stepKey="resetCatalogSearchConfiguration"/>
+           <magentoCLI command="cache:flush config" stepKey="cleanCacheAfterElasticSearchDisable"/>
            <magentoCLI command="indexer:reindex" stepKey="performReindexAfterElasticSearchDisable"/>
-           <magentoCLI command="cache:flush" stepKey="cleanCacheAfterElasticSearchDisable"/>
            <actionGroup ref="logout" stepKey="logout"/>
        </after>
 

@@ -31,9 +31,7 @@
             <actionGroup ref="logout" stepKey="logoutAdmin"/>
         </after>
 
-        <!-- Perform reindex and flush cache -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+<magentoCron stepKey="reindex" groups="index"/>
 
         <!-- 1. Navigate to Frontend -->
         <actionGroup ref="StorefrontOpenHomePageActionGroup" stepKey="goToStorefront"/>

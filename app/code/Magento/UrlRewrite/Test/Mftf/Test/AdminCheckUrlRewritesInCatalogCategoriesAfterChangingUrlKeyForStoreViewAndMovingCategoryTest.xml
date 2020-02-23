@@ -38,9 +38,7 @@
             <!--Create additional Store View in Main Website Store -->
             <actionGroup ref="AdminCreateStoreViewActionGroup" stepKey="createStoreView"/>
 
-            <!-- Reindex and flush the cache -->
-            <magentoCLI command="indexer:reindex" stepKey="runReindex"/>
-            <magentoCLI command="cache:flush" stepKey="cleanCache"/>
+            <magentoCron stepKey="runReindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="createFirstCategory" stepKey="deleteFirstCategory"/>

@@ -32,8 +32,7 @@
             </createData>
 
             <!-- TODO: REMOVE AFTER FIX MC-21717 -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
 
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
         </before>

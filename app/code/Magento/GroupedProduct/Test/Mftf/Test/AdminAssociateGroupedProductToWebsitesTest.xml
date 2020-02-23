@@ -53,7 +53,7 @@
             </actionGroup>
 
             <!-- Reindex -->
-            <magentoCLI command="indexer:reindex" stepKey="reindexAllIndexes"/>
+            <magentoCron stepKey="reindexAllIndexes" groups="index"/>
         </before>
 
         <after>

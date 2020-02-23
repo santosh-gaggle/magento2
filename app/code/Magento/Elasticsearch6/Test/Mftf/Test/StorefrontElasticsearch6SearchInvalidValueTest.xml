@@ -26,8 +26,7 @@
             <!--Set Minimal Query Length-->
             <magentoCLI command="config:set {{SetMinQueryLength2Config.path}} {{SetMinQueryLength2Config.value}}" stepKey="setMinQueryLength"/>
             <!--Reindex indexes and clear cache-->
-            <magentoCLI command="indexer:reindex catalogsearch_fulltext" stepKey="reindex"/>
-            <magentoCLI command="cache:flush config" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <!--Set configs to default-->
@@ -48,8 +47,7 @@
             <waitForPageLoad stepKey="waitForProductIndexPage"/>
             <actionGroup ref="DeleteProductsIfTheyExistActionGroup" stepKey="deleteProduct"/>
             <actionGroup ref="ResetProductGridToDefaultViewActionGroup" stepKey="resetFiltersIfExist"/>
-            <magentoCLI command="indexer:reindex catalogsearch_fulltext" stepKey="reindex"/>
-            <magentoCLI command="cache:flush config" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
             <actionGroup ref="logout" stepKey="logout"/>
         </after>
         <!--Create new searchable product attribute-->
@@ -80,7 +78,7 @@
         <fillField selector="{{AdminProductFormSection.attributeRequiredInput(textProductAttribute.attribute_code)}}" userInput="searchable" stepKey="fillTheAttributeRequiredInputField"/>
         <click selector="{{AdminProductFormActionSection.saveButton}}" stepKey="clickSaveButton"/>
         <!-- TODO: REMOVE AFTER FIX MC-21717 -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
         <magentoCLI command="cache:flush eav" stepKey="flushCache"/>
         <!--Assert search results on storefront-->
         <amOnPage url="{{StorefrontHomePage.url}}" stepKey="goToStorefrontPage"/>

@@ -44,7 +44,7 @@
             <actionGroup ref="AdminCatalogPriceRuleSaveAndApplyActionGroup" stepKey="clickSaveAndApplyRule"/>
 
             <!-- Perform reindex -->
-            <magentoCLI command="indexer:reindex" arguments="catalogrule_rule" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <createData entity="PersistentConfigDefault" stepKey="setDefaultPersistentState"/>

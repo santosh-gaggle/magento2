@@ -20,18 +20,16 @@
             <group value="catalog"/>
         </annotations>
         <before>
-            <!-- Create category, flush cache and log in -->
-            <comment userInput="Create category, flush cache and log in" stepKey="createCategoryAndLogIn"/>
             <createData entity="SimpleSubCategory" stepKey="simpleCategory"/>
+            <magentoCron groups="index" stepKey="reindex"/>
+
             <actionGroup ref="LoginAsAdmin" stepKey="logInAsAdmin"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <!-- Delete category and log out -->
             <comment userInput="Delete category and log out" stepKey="deleteCategoryAndLogOut"/>
             <deleteData createDataKey="simpleCategory" stepKey="deleteCategory"/>
             <actionGroup ref="logout" stepKey="logOutFromAdmin"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </after>
         <!-- Navigate to category details page -->
         <comment userInput="Navigate to category details page" stepKey="navigateToAdminCategoryPage"/>

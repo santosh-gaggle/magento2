@@ -165,7 +165,7 @@
             <waitForPageLoad stepKey="waitForTaxSaved"/>
             <see userInput="You saved the configuration." selector="{{AdminCategoryMessagesSection.SuccessMessage}}" stepKey="seeSuccess"/>
 
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <!-- navigate to the tax configuration page -->

@@ -21,7 +21,7 @@
         </annotations>
         <before>
             <createData stepKey="customer" entity="Simple_Customer_Without_Address"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
             <actionGroup ref="LoginAsAdmin" stepKey="login"/>
         </before>
         <after>
@@ -216,7 +216,7 @@
         </annotations>
         <before>
             <createData stepKey="customer" entity="Simple_US_Customer_Multiple_Addresses"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
             <actionGroup ref="LoginAsAdmin" stepKey="login"/>
         </before>
         <after>

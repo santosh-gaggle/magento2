@@ -28,7 +28,7 @@
             <actionGroup ref = "LoginAsAdmin" stepKey="loginAsAdmin"/>
 
             <!-- TODO: Replace this with CliRunReindexUsingCronJobsActionGroup after MC-29943 delivered-->
-            <magentoCLI command="indexer:reindex" arguments="catalogsearch_fulltext catalog_category_product" stepKey="reindexIndices"/>
+            <magentoCron stepKey="reindexIndices" groups="index"/>
         </before>
 
         <after>

@@ -138,8 +138,7 @@
         <waitForPageLoad stepKey="waitForPageLoad1"/>
         <see selector="{{AdminCategoryMessagesSection.SuccessMessage}}" userInput="You saved the product." stepKey="messageYouSavedTheProductIsShown"/>
 
-        <!--Run re-index task-->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!--Open Category in Store Front and select product attribute option from sidebar -->
         <actionGroup ref="SelectStorefrontSideBarAttributeOption" stepKey="selectStorefrontProductAttributeOption">

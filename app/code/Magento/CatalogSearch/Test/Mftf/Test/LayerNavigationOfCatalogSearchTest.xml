@@ -58,8 +58,7 @@
         <click selector="{{AdminProductFormSection.save}}" stepKey="clickSaveButton2"/>
         <waitForPageLoad stepKey="waitForSimpleProductSaved2"/>
 
-        <!--Run re-index task-->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!--Navigate to category on Storefront-->
         <comment userInput="Navigate to category on Storefront" stepKey="comment3"/>

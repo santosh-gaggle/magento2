@@ -39,7 +39,8 @@
                 <requiredEntity createDataKey="fixedBundleOption"/>
                 <requiredEntity createDataKey="createSimpleProductTwo"/>
             </createData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="createDynamicBundle" stepKey="deleteDynamicBundleProduct"/>

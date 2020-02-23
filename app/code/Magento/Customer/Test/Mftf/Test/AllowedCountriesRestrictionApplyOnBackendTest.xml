@@ -42,7 +42,7 @@
             <!--Set account sharing option - Default value is 'Per Website'-->
             <comment userInput="Set account sharing option - Default value is 'Per Website'" stepKey="setAccountSharingOption"/>
             <createData entity="CustomerAccountSharingDefault" stepKey="setToAccountSharingToDefault"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <!--delete all created data and set main website country options to default-->
@@ -60,8 +60,7 @@
             <actionGroup ref="SetWebsiteCountryOptionsToDefaultActionGroup" stepKey="setCountryOptionsToDefault"/>
             <createData entity="CustomerAccountSharingSystemValue" stepKey="setAccountSharingToSystemValue"/>
             <actionGroup ref="logout" stepKey="logout"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </after>
         <!--Check that all countries are allowed initially and get amount-->
         <comment userInput="Check that all countries are allowed initially and get amount" stepKey="checkAllCountriesAreAllowed"/>

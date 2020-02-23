@@ -64,7 +64,7 @@
         <magentoCLI command="config:set {{EnableTranslateInlineForStorefront.path}} {{EnableTranslateInlineForStorefront.value}}" stepKey="EnableTranslateInlineForStorefront"/>
 
         <!-- 2. Refresh magento cache -->
-        <magentoCLI command="cache:flush" stepKey="flushCache1"/>
+        <magentoCLI command="cache:flush config" stepKey="flushCache1"/>
 
         <!-- 3. Go to storefront and click on cart button on the top -->
         <reloadPage stepKey="reloadPage"/>
@@ -323,7 +323,7 @@
         <magentoCLI command="config:set {{DisableTranslateInlineForStorefront.path}} {{DisableTranslateInlineForStorefront.value}}" stepKey="DisableTranslateInlineForStorefront"/>
 
         <!-- 8. Clear magento cache -->
-        <magentoCLI command="cache:flush" stepKey="flushCache2"/>
+        <magentoCLI command="cache:flush config" stepKey="flushCache2"/>
 
         <!-- 9. Clear browser locale storage for magento site -->
         <executeJS function="location.reload(true);" stepKey="hardReload"/>
@@ -432,7 +432,7 @@
         </actionGroup>
 
         <magentoCLI command="config:set {{EnableTranslateInlineForStorefront.path}} {{EnableTranslateInlineForStorefront.value}}" stepKey="EnableTranslateInlineStorefront"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache3"/>
+        <magentoCLI command="cache:flush config" stepKey="flushCache3"/>
         <reloadPage stepKey="reloadProductPage"/>
         <waitForPageLoad stepKey="waitForReloadPage"/>
         <click selector="{{StorefrontMiniCartSection.show}}" stepKey="showMiniCartPopup"/>
@@ -564,6 +564,6 @@
         <actionGroup ref="StorefrontSignOutActionGroup" stepKey="SignOutCustomer3"/>
 
         <magentoCLI command="config:set {{DisableTranslateInlineForStorefront.path}} {{DisableTranslateInlineForStorefront.value}}" stepKey="DisableTranslateInlineStorefront"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache4"/>
+        <magentoCLI command="cache:flush config" stepKey="flushCache4"/>
     </test>
 </tests>

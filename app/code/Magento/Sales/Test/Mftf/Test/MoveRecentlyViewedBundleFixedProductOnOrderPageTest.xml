@@ -57,7 +57,7 @@
             <!-- Change configuration -->
             <magentoCLI command="config:set reports/options/enabled 1" stepKey="enableReportModule"/>
 
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <!-- Admin logout -->

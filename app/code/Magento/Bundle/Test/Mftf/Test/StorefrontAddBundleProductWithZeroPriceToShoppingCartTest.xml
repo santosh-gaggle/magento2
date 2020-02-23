@@ -40,7 +40,8 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="apiSimple"/>
             </createData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <createData entity="FreeShippinMethodDefault" stepKey="disableFreeShipping"/>

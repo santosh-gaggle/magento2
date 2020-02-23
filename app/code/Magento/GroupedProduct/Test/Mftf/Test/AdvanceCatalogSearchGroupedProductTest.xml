@@ -31,8 +31,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -66,8 +65,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -96,8 +94,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -127,8 +124,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -162,8 +158,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -193,8 +188,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -228,8 +222,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -268,8 +261,7 @@
             <getData entity="GetProduct" stepKey="arg3">
                 <requiredEntity createDataKey="simple2"/>
             </getData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -312,8 +304,7 @@
             <getData entity="GetProduct" stepKey="arg3">
                 <requiredEntity createDataKey="simple2"/>
             </getData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>

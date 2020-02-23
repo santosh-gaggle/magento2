@@ -35,7 +35,7 @@
             <actionGroup ref="AdminCatalogPriceRuleFillActionsActionGroup" stepKey="fillActionsForThirdPriceRule"/>
             <actionGroup ref="AdminCatalogPriceRuleSaveAndApplyActionGroup" stepKey="saveAndApplyFirstPriceRule"/>
             <!-- Perform reindex -->
-            <magentoCLI command="indexer:reindex" arguments="catalogrule_rule" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
 
         <after>

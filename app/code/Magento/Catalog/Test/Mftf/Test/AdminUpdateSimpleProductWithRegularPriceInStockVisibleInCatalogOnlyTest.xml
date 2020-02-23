@@ -95,7 +95,7 @@
         <seeInField selector="{{AdminProductSEOSection.urlKeyInput}}" userInput="{{simpleProductRegularPrice32501InStock.urlKey}}" stepKey="seeUrlKey"/>
 
         <!--Run re-index task -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!--Verify customer see updated simple product link on category page -->
         <amOnPage url="{{StorefrontCategoryPage.url($$categoryEntity.name$$)}}" stepKey="openCategoryPage"/>

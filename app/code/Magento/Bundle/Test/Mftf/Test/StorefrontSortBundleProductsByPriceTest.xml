@@ -94,8 +94,7 @@
                 <requiredEntity createDataKey="createSecondProductForBundle"/>
             </createData>
 
-            <!-- Perform CLI reindex -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <!-- Delete all created data -->

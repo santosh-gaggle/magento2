@@ -73,7 +73,7 @@
             </createData>
 
             <!-- Perform reindex -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="createConfigurableProduct" stepKey="deleteConfigurableProduct"/>

@@ -23,7 +23,7 @@
                 <requiredEntity createDataKey="createCategory"/>
             </createData>
             <updateData createDataKey="createProduct" entity="productWithOptions" stepKey="updateProductWithCustomOptions"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData  createDataKey="createCategory" stepKey="deleteCategory"/>

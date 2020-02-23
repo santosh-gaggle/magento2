@@ -61,8 +61,7 @@
             <actionGroup ref="AdminDeleteWebsiteActionGroup" stepKey="deleteWebsite">
                 <argument name="websiteName" value="{{NewWebSiteData.name}}"/>
             </actionGroup>
-            <magentoCLI stepKey="reindex" command="indexer:reindex"/>
-            <magentoCLI stepKey="flushCache" command="cache:flush"/>
+<magentoCron stepKey="reindex" groups="index"/>
             <deleteData createDataKey="createSubCategory" stepKey="deleteSubCategory"/>
             <deleteData createDataKey="createRootCategory" stepKey="deleteRootCategory"/>
             <deleteData createDataKey="createProduct" stepKey="deleteProduct"/>
@@ -88,8 +87,7 @@
         </actionGroup>
         <actionGroup ref="SaveProductFormActionGroup" stepKey="saveProduct2"/>
         <!--Reindex and flush cache-->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        <magentoCron stepKey="reindex" groups="index"/>
         <!--Switch to 'Default Store View' scope and open product page-->
         <actionGroup ref="SwitchToTheNewStoreViewActionGroup" stepKey="SwitchDefaultStoreView">
             <argument name="storeViewName" value="'Default Store View'"/>

@@ -58,7 +58,7 @@
         </after>
 
         <!--Re-index-->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!-- Step 1: User browses catalog -->
         <comment userInput="Start of browsing catalog" stepKey="startOfBrowsingCatalog" />

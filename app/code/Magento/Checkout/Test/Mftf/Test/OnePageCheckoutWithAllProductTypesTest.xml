@@ -88,7 +88,7 @@
             <!-- Create customer -->
             <createData entity="Simple_Customer_Without_Address" stepKey="createCustomer"/>
 
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <magentoCLI stepKey="removeDownloadableDomain" command="downloadable:domains:remove static.magento.com"/>

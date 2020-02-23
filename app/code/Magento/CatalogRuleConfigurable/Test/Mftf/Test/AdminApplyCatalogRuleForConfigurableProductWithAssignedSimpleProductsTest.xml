@@ -193,8 +193,7 @@
         <see selector="{{AdminCategoryMessagesSection.SuccessMessage}}" userInput="You saved the rule." stepKey="assertSuccessMessage"/>
 
         <!-- Run full reindex and clear caches -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!-- Login to storefront from customer -->
         <actionGroup ref="LoginToStorefrontActionGroup" stepKey="logInFromCustomer">

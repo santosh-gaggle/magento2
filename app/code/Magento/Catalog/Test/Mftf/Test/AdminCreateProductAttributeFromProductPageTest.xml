@@ -91,7 +91,7 @@
         <see selector="{{AdminCategoryMessagesSection.SuccessMessage}}" userInput="You saved the product." stepKey="messageYouSavedTheProductIsShown"/>
 
         <!--Run Re-Index task -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!--Verify product attribute added in product form -->
         <scrollTo selector="{{AdminProductFormSection.contentTab}}" stepKey="scrollToContentTab"/>

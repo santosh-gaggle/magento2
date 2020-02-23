@@ -43,7 +43,7 @@
             </createData>
 
             <!-- Reindex -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
 
             <!-- Login as admin -->
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>

@@ -94,8 +94,7 @@
             <argument name="attributeCode" value="{{ProductAttributeFrontendLabel.label}}"/>
         </actionGroup>
 
-        <!-- Run re-index task-->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!-- Go to the category page -->
         <amOnPage url="$$createCategory.name$$.html" stepKey="amOnCategoryPage"/>

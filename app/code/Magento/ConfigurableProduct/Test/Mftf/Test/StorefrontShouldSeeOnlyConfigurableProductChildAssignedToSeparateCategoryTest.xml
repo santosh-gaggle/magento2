@@ -112,8 +112,7 @@
             <argument name="categoryName" value="$$secondCategory.name$$"/>
         </actionGroup>
 
-        <magentoCLI command="indexer:reindex" arguments="catalogsearch_fulltext" stepKey="reindexSearchIndex"/>
-
+        <magentoCron stepKey="reindexSearchIndex" groups="index"/>
         <!-- Go to storefront to view child product -->
         <actionGroup ref="StorefrontNavigateCategoryPageActionGroup" stepKey="goToSecondCategoryStorefront">
             <argument name="category" value="$$secondCategory$$"/>

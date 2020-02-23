@@ -33,7 +33,7 @@
             </createData>
             <!-- Create simple product -->
             <createData entity="SimpleProduct2" stepKey="createSimpleProduct"/>
-            <magentoCLI command="indexer:reindex" arguments="catalogsearch_fulltext" stepKey="reindexCatalogSearch"/>
+            <magentoCron stepKey="reindex" groups="index"/>
             <!-- Login to Admin page -->
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
         </before>

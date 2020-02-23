@@ -61,9 +61,7 @@
         <!-- Assert that the Success message is present after the delete -->
         <see selector="{{AdminMessagesSection.success}}" userInput="You deleted the rule." stepKey="seeDeletedRuleMessage1"/>
 
-        <!-- Reindex -->
-        <magentoCLI command="cache:flush" stepKey="flushCache1"/>
-        <magentoCLI command="indexer:reindex" stepKey="reindex1"/>
+        <magentoCron stepKey="reindex1" groups="index"/>
 
         <!-- Assert that the rule isn't present on the Category page -->
         <amOnPage url="$$createCategory1.name$$.html" stepKey="goToStorefrontCategoryPage1"/>
@@ -155,8 +153,7 @@
             </createData>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
 
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin1"/>
 
@@ -197,9 +194,7 @@
         <waitForPageLoad time="30" stepKey="waitForPageLoad1"/>
         <see selector="{{AdminMessagesSection.success}}" userInput="You deleted the rule." stepKey="seeDeletedRuleMessage1"/>
 
-        <!-- Reindex -->
-        <magentoCLI command="cache:flush" stepKey="flushCache1"/>
-        <magentoCLI command="indexer:reindex" stepKey="reindex1"/>
+        <magentoCron stepKey="reindex1" groups="index"/>
 
         <!-- Assert that the rule isn't present on the Category page -->
         <amOnPage url="$$createCategory1.name$$.html" stepKey="goToStorefrontCategoryPage1"/>

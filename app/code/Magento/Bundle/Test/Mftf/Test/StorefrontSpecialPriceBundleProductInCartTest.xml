@@ -36,7 +36,7 @@
                     <requiredEntity createDataKey="simpleProduct"/>
                 </createData>
                 <!-- Run reindex stock status -->
-                <magentoCLI command="indexer:reindex" arguments="cataloginventory_stock" stepKey="reindex"/>
+                <magentoCron stepKey="reindex" groups="index"/>
             </before>
             <after>
                 <deleteData createDataKey="bundleProduct" stepKey="deleteBundleProduct"/>

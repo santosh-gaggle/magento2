@@ -55,13 +55,12 @@
                 <argument name="categoryName" value="$$categoryN.name$$, $$categoryM.name$$"/>
             </actionGroup>
 
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" arguments="full_page" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <!-- Change "Category Products" and "Product Categories" indexers to "Update on Save" mode -->
             <magentoCLI command="indexer:set-mode" arguments="realtime" stepKey="setRealtimeMode"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
 
             <!-- Delete data -->
             <deleteData createDataKey="productA" stepKey="deleteProductA"/>

@@ -75,7 +75,7 @@
             </createData>
             <magentoCLI command="config:set customer/online_customers/section_data_lifetime 1"
                         stepKey="setConfigForCartLifetime"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache" />
+            <magentoCLI command="cache:flush config" stepKey="flushCache" />
         </before>
         <after>
             <deleteData createDataKey="createSimpleProduct" stepKey="deleteProduct"/>

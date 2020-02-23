@@ -25,7 +25,7 @@
             <createData entity="_defaultProduct" stepKey="product">
                 <requiredEntity createDataKey="category"/>
             </createData>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron groups="index" stepKey="reindex"/>
         </before>
 
         <after>

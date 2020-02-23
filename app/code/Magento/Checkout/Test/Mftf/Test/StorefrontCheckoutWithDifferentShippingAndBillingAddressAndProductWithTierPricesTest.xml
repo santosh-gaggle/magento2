@@ -33,6 +33,7 @@
                 <argument name="price" value="Fixed"/>
                 <argument name="amount" value="24.00"/>
             </actionGroup>
+            <magentoCron stepKey="reindex" groups="index"/>
             <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>

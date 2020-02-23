@@ -26,17 +26,19 @@
             <!--Set currency allow config-->
             <magentoCLI command="config:set currency/options/allow RHD,CHW,CHE,AMD,EUR,USD" stepKey="setCurrencyAllow"/>
             <!--TODO: Add Api key-->
-            <magentoCLI command="cache:flush" stepKey="clearCache"/>
+            <magentoCLI command="cache:flush config" stepKey="clearCache"/>
             <!--Create product-->
             <createData entity="SimpleSubCategory" stepKey="createCategory"/>
             <createData entity="SimpleProduct" stepKey="createProduct">
                 <requiredEntity createDataKey="createCategory"/>
             </createData>
+            <magentoCron groups="index" stepKey="reindex"/>
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
         </before>
         <after>
             <!--Set currency allow previous config-->
             <magentoCLI command="config:set currency/options/allow EUR,USD" stepKey="setCurrencyAllow"/>
+            <magentoCLI command="cache:flush config" stepKey="clearCache"/>
             <!--Delete created data-->
             <deleteData createDataKey="createProduct" stepKey="deleteProduct"/>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
@@ -68,7 +70,7 @@
         <see selector="{{StorefrontCategoryMainSection.productPrice}}" userInput="€" stepKey="seeEURInPrice"/>
         <!--Set allowed currencies greater then 10-->
         <magentoCLI command="config:set currency/options/allow RHD,CHW,YER,ZMK,CHE,EUR,USD,AMD,RUB,DZD,ARS,AWG" stepKey="setCurrencyAllow"/>
-        <magentoCLI command="cache:flush" stepKey="clearCache"/>
+        <magentoCLI command="cache:flush config" stepKey="clearCache"/>
         <!--Import rates from Currency Converter API with currencies greater then 10-->
         <amOnPage url="{{AdminCurrencyRatesPage.url}}" stepKey="onCurrencyRatePageSecondTime"/>
         <actionGroup ref="AdminImportCurrencyRatesActionGroup" stepKey="importCurrencyRatesGreaterThen10">

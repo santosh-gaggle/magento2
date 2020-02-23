@@ -24,8 +24,7 @@
             <!-- Create category -->
             <createData entity="SimpleSubCategory" stepKey="createCategory"/>
             <!-- Reindex and clear page cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" arguments="full_page" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
             <!-- Login as admin -->
             <actionGroup ref="LoginAsAdmin" stepKey="LoginAsAdmin"/>
         </before>
@@ -76,8 +75,7 @@
 
         <!-- Save product -->
         <actionGroup ref="SaveProductFormActionGroup" stepKey="saveProduct"/>
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!-- Find downloadable product in grid -->
         <amOnPage url="{{AdminProductIndexPage.url}}" stepKey="visitAdminProductPage"/>

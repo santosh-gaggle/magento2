@@ -67,7 +67,7 @@
         <!-- Run cron twice -->
         <magentoCLI command="cron:run" arguments="--group=consumers" stepKey="runCron1"/>
         <magentoCLI command="cron:run" arguments="--group=consumers" stepKey="runCron2"/>
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
 
         <!-- Assert on storefront default view -->
         <actionGroup ref="GoToStoreViewAdvancedCatalogSearchActionGroup" stepKey="GoToStoreViewAdvancedCatalogSearchActionGroupDefault"/>

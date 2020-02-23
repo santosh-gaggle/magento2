@@ -24,7 +24,7 @@
                 <requiredEntity createDataKey="createCategory"/>
             </createData>
             <createData entity="Simple_US_Customer" stepKey="createCustomer"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="createSimpleProduct" stepKey="deleteSimpleProduct"/>
@@ -119,7 +119,7 @@
             <click stepKey="clickSave" selector="{{AdminStoresMainActionsSection.saveButton}}"/>
 
             <!--TODO: REMOVE AFTER FIX MC-21717 -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex" groups="index"/>
             <magentoCLI command="cache:flush full_page" stepKey="flushCache"/>
         </before>
         <after>
@@ -219,8 +219,7 @@
             <createData entity="Simple_US_Customer" stepKey="simpleuscustomer"/>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>

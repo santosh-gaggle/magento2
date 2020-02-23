@@ -201,7 +201,7 @@
         <waitForPageLoad stepKey="waitForNewSimpleProductPage"/>
         <seeElement selector="{{AdminProductMessagesSection.successMessage}}" stepKey="seeSaveProductMessageThird"/>
          <!--TODO: REMOVE AFTER FIX MC-21717 -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex" groups="index"/>
         <magentoCLI command="cache:flush full_page" stepKey="flushCache"/>
     </test>
 </tests>

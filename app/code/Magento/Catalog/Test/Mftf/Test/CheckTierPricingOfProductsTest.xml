@@ -333,8 +333,7 @@
             <actionGroup ref="logout" stepKey="logout"/>
 
             <!--Do reindex and flush cache-->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </after>
     </test>
 </tests>

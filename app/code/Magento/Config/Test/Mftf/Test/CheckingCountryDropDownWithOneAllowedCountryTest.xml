@@ -20,9 +20,9 @@
         </annotations>
         <before>
             <createData entity="EnableAdminAccountAllowCountry" stepKey="setAllowedCountries"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
-            <magentoCLI stepKey="flushCache" command="cache:flush"/>
             <createData entity="DisableAdminAccountAllowCountry" stepKey="setDefaultValueForAllowCountries"/>
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
             <actionGroup ref="AdminDeleteCustomerActionGroup" stepKey="deleteCustomer">
@@ -32,8 +32,7 @@
             <waitForPageLoad stepKey="WaitForPageToLoad"/>
             <actionGroup ref="logout" stepKey="logout"/>
         </after>
-         <!--Flush Magento Cache-->
-        <magentoCLI stepKey="flushCache" command="cache:flush"/>
+
          <!--Create a customer account from Storefront-->
         <actionGroup ref="SignUpNewUserFromStorefrontActionGroup" stepKey="createAnAccount">
             <argument name="Customer" value="CustomerEntityOne"/>

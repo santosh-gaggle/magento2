@@ -25,8 +25,7 @@
             </createData>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData stepKey="deleteProduct" createDataKey="createSimpleProduct"/>
@@ -94,8 +93,7 @@
             </createData>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="createSimpleProduct" stepKey="deleteProduct"/>
@@ -310,8 +308,7 @@
             </createData>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData stepKey="deleteProduct" createDataKey="createSimpleProduct"/>
@@ -342,8 +339,7 @@
             </createData>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData stepKey="deleteProduct" createDataKey="createVirtualProduct"/>
@@ -376,8 +372,7 @@
             </actionGroup>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData stepKey="deleteCategory" createDataKey="createCategory"/>
@@ -422,8 +417,7 @@
             </createData>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <magentoCLI stepKey="removeDownloadableDomain" command="downloadable:domains:remove example.com static.magento.com"/>
@@ -459,8 +453,7 @@
             </createData>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData stepKey="deleteGroupedProduct" createDataKey="createProduct"/>
@@ -510,8 +503,7 @@
             <actionGroup ref="SaveProductFormActionGroup" stepKey="saveProduct"/>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData stepKey="deleteBundleProduct" createDataKey="createBundleProduct"/>
@@ -577,8 +569,7 @@
             <actionGroup ref="SaveProductFormActionGroup" stepKey="saveProduct"/>
 
             <!-- Perform reindex and flush cache -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData stepKey="deleteBundleProduct" createDataKey="createBundleProduct"/>

@@ -14,9 +14,7 @@
             <group value="CatalogSearch"/>
         </annotations>
 
-        <!-- Perform reindex and flush cache -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+<magentoCron stepKey="reindex" groups="index"/>
 
         <actionGroup ref="GoToStoreViewAdvancedCatalogSearchActionGroup" stepKey="GoToStoreViewAdvancedCatalogSearchActionGroup"/>
         <actionGroup ref="StorefrontAdvancedCatalogSearchByProductNameActionGroup" stepKey="search">
@@ -32,9 +30,7 @@
             <group value="CatalogSearch"/>
         </annotations>
 
-        <!-- Perform reindex and flush cache -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+<magentoCron stepKey="reindex" groups="index"/>
 
         <actionGroup ref="GoToStoreViewAdvancedCatalogSearchActionGroup" stepKey="GoToStoreViewAdvancedCatalogSearchActionGroup"/>
         <actionGroup ref="StorefrontAdvancedCatalogSearchByProductSkuActionGroup" stepKey="search">
@@ -49,9 +45,7 @@
             <features value="CatalogSearch"/>
             <group value="CatalogSearch"/>
         </annotations>
-        <!-- Perform reindex and flush cache -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+<magentoCron stepKey="reindex" groups="index"/>
 
         <actionGroup ref="GoToStoreViewAdvancedCatalogSearchActionGroup" stepKey="GoToStoreViewAdvancedCatalogSearchActionGroup"/>
         <actionGroup ref="StorefrontAdvancedCatalogSearchByDescriptionActionGroup" stepKey="search">
@@ -67,9 +61,7 @@
             <group value="CatalogSearch"/>
         </annotations>
 
-        <!-- Perform reindex and flush cache -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+<magentoCron stepKey="reindex" groups="index"/>
 
         <actionGroup ref="GoToStoreViewAdvancedCatalogSearchActionGroup" stepKey="GoToStoreViewAdvancedCatalogSearchActionGroup"/>
         <actionGroup ref="StorefrontAdvancedCatalogSearchByShortDescriptionActionGroup" stepKey="search">
@@ -85,9 +77,7 @@
             <group value="CatalogSearch"/>
         </annotations>
 
-        <!-- Perform reindex and flush cache -->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+<magentoCron stepKey="reindex" groups="index"/>
 
         <actionGroup ref="GoToStoreViewAdvancedCatalogSearchActionGroup" stepKey="GoToStoreViewAdvancedCatalogSearchActionGroup"/>
         <actionGroup ref="StorefrontAdvancedCatalogSearchByProductNameAndPriceActionGroup" stepKey="search">

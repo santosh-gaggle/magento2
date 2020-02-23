@@ -20,17 +20,18 @@
             <group value="Catalog"/>
         </annotations>
         <before>
-            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
             <magentoCLI command="config:set {{CatalogInventoryOptionsShowOutOfStockDisable.path}} {{CatalogInventoryOptionsShowOutOfStockDisable.value}}" stepKey="setConfigShowOutOfStockFalse"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCLI command="cache:flush config" stepKey="flushCache"/>
             <createData entity="SimpleSubCategory" stepKey="category"/>
             <createData entity="SimpleProduct4" stepKey="product">
                 <requiredEntity createDataKey="category"/>
             </createData>
+            <magentoCron groups="index" stepKey="reindex"/>
+            <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
         </before>
         <after>
             <magentoCLI command="config:set {{CatalogInventoryOptionsShowOutOfStockDisable.path}} {{CatalogInventoryOptionsShowOutOfStockDisable.value}}" stepKey="setConfigShowOutOfStockFalse"/>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCLI command="cache:flush config" stepKey="flushCache"/>
             <deleteData createDataKey="product" stepKey="deleteProduct"/>
             <deleteData createDataKey="category" stepKey="deleteCategory"/>
             <actionGroup ref="logout" stepKey="logout"/>
@@ -45,10 +46,7 @@
         <!--Turn on 'out on stock' config-->
         <comment userInput="Turn on 'out of stock' config" stepKey="onOutOfStockConfig"/>
         <magentoCLI command="config:set {{CatalogInventoryOptionsShowOutOfStockEnable.path}} {{CatalogInventoryOptionsShowOutOfStockEnable.value}}" stepKey="setConfigShowOutOfStockTrue"/>
-        <!--Clear cache and reindex-->
-        <comment userInput="Clear cache and reindex" stepKey="cleanCache"/>
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
-        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        <magentoCron stepKey="reindex" groups="index"/>
         <!--Open product page-->
         <comment userInput="Open product page" stepKey="openProductPage"/>
         <amOnPage url="{{StorefrontProductPage.url($$product.custom_attributes[url_key]$$)}}" stepKey="goToSimpleProductPage2"/>

@@ -34,7 +34,8 @@
             <createData entity="VirtualProduct" stepKey="virtualProduct4">
                 <field key="price">40.00</field>
             </createData>
-            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <magentoCLI stepKey="configCacheFlush" command="cache:flush config"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="virtualProduct1" stepKey="deleteProduct1"/>
@@ -43,6 +44,7 @@
             <deleteData createDataKey="virtualProduct4" stepKey="deleteProduct4"/>
             <magentoCLI stepKey="setMaxDisplayCountForMiniCart" command="config:set checkout/options/max_items_display_count 10"/>
             <magentoCLI stepKey="setMaxDisplayCountForOrderSummary" command="config:set checkout/sidebar/max_items_display_count 10"/>
+            <magentoCLI stepKey="configCacheFlush" command="cache:flush config"/>
         </after>
 
         <!-- Open Product1 page in StoreFront -->

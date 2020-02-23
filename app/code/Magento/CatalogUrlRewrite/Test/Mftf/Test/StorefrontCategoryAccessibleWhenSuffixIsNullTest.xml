@@ -18,10 +18,10 @@
         </annotations>
         <before>
             <magentoCLI command="config:set catalog/seo/category_url_suffix ''" stepKey="setCategoryUrlSuffix"/>
-            <magentoCLI command="config:set catalog/seo/generate_category_product_rewrites 0"
-                        stepKey="setCategoryProductRewrites"/>
-            <magentoCLI command="cache:flush" stepKey="flushCacheBefore"/>
+            <magentoCLI command="config:set catalog/seo/generate_category_product_rewrites 0" stepKey="setCategoryProductRewrites"/>
+            <magentoCLI command="cache:flush config" stepKey="flushCacheBefore"/>
             <createData entity="_defaultCategory" stepKey="createCategory"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
@@ -29,7 +29,7 @@
                         stepKey="restoreCategoryUrlSuffix"/>
             <magentoCLI command="config:set catalog/seo/generate_category_product_rewrites 1"
                         stepKey="restoreCategoryProductRewrites"/>
-            <magentoCLI command="cache:flush" stepKey="flushCacheAfter"/>
+            <magentoCLI command="cache:flush config" stepKey="flushCacheAfter"/>
         </after>
 
         <amOnPage url="/$$createCategory.name$$" stepKey="onCategoryPage"/>

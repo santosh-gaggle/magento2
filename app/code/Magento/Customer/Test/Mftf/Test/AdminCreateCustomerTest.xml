@@ -20,7 +20,7 @@
             <group value="create"/>
         </annotations>
         <before>
-            <magentoCLI command="indexer:reindex customer_grid" stepKey="reindexCustomerGrid"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <actionGroup ref="logout" stepKey="adminLogout"/>
