@@ -28,7 +28,7 @@
             <createData entity="SimpleProduct2" stepKey="simpleProduct5"/>
             <createData entity="SimpleProduct2" stepKey="simpleProduct6"/>
 
-            <magentoCLI command="cron:run --group=index" stepKey="runCronIndexer"/>
+            <magentoCron groups="index" stepKey="runCronIndexer"/>
         </before>
         <after>
             <!-- Delete simple product -->

@@ -80,9 +80,7 @@
                 <requiredEntity createDataKey="secondSimpleProductForFixedWithAttribute"/>
             </createData>
 
-            <!-- Run cron twice -->
-            <magentoCLI command="cron:run" stepKey="runCron1"/>
-            <magentoCLI command="cron:run" stepKey="runCron2"/>
+            <magentoCron groups="index" stepKey="runCron"/>
 
             <!-- Login as admin -->
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
@@ -109,7 +107,7 @@
             <actionGroup ref="logout" stepKey="logout"/>
 
             <!-- Reindex invalidated indices after product attribute has been created/deleted -->
-            <actionGroup ref="CliRunReindexUsingCronJobsActionGroup" stepKey="reindexInvalidatedIndices"/>
+            <magentoCron groups="index" stepKey="reindexInvalidatedIndices"/>
         </after>
 
         <!-- Go to export page -->

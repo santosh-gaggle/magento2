@@ -105,7 +105,9 @@
                 <requiredEntity createDataKey="createConfigProduct"/>
                 <requiredEntity createDataKey="createConfigChildProduct3"/>
             </createData>
-<magentoCron stepKey="reindex" groups="index"/>
+
+            <magentoCLI stepKey="flushCache" command="cache:flush" arguments="eav"/>
+            <magentoCron stepKey="reindex" groups="index"/>
         </before>
         <after>
             <!-- Delete data -->
@@ -118,8 +120,7 @@
             <deleteData createDataKey="createConfigProductAttribute" stepKey="deleteProductAttribute"/>
             <actionGroup ref="logout" stepKey="logout"/>
 
-            <!-- Reindex invalidated indices after product attribute has been created/deleted -->
-            <actionGroup ref="CliRunReindexUsingCronJobsActionGroup" stepKey="reindexInvalidatedIndices"/>
+            <magentoCron stepKey="reindexAfterTest" groups="index"/>
         </after>
 
         <!-- 1. Login as a customer -->
@@ -142,8 +143,12 @@
         <waitForPageLoad stepKey="waitForWishlistPageLoad"/>
 
         <!-- Click "Remove item" -->
-        <scrollTo selector="{{StorefrontCustomerWishlistProductSection.ProductInfoByName($$createConfigProduct.name$$)}}" stepKey="scrollToProduct"/>
-        <moveMouseOver selector="{{StorefrontCustomerWishlistProductSection.ProductInfoByName($$createConfigProduct.name$$)}}" stepKey="mouseOverOnProduct"/>
+        <scrollTo
+            selector="{{StorefrontCustomerWishlistProductSection.ProductInfoByName($$createConfigProduct.name$$)}}"
+            stepKey="scrollToProduct"/>
+        <moveMouseOver
+            selector="{{StorefrontCustomerWishlistProductSection.ProductInfoByName($$createConfigProduct.name$$)}}"
+            stepKey="mouseOverOnProduct"/>
         <click selector="{{StorefrontCustomerWishlistProductSection.removeProduct}}" stepKey="clickRemoveButton"/>
 
         <!-- Assert Wishlist is empty -->

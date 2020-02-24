@@ -31,9 +31,7 @@
                 <requiredEntity createDataKey="simpleSubCategoryOne"/>
             </createData>
 
-            <!-- TODO: Replace this with CliRunReindexUsingCronJobsActionGroup after MC-29943 delivered-->
-            <magentoCLI command="cron:run" arguments="--group='index'" stepKey="firstRunToScheduleJobs"/>
-            <magentoCLI command="cron:run" arguments="--group='index'" stepKey="secondRunToExecuteJobs"/>
+            <magentoCron groups="index" stepKey="runCronIndex"/>
 
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>
         </before>

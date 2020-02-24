@@ -48,9 +48,7 @@
                 <requiredEntity createDataKey="createSecondSimpleProduct"/>
             </updateData>
 
-            <!-- Run cron twice -->
-            <magentoCLI command="cron:run" stepKey="runCron1"/>
-            <magentoCLI command="cron:run" stepKey="runCron2"/>
+            <magentoCron groups="index" stepKey="runCron"/>
 
             <!-- Login as admin -->
             <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdmin"/>

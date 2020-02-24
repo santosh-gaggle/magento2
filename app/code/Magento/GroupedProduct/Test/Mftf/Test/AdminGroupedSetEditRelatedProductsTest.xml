@@ -34,7 +34,7 @@
             <argument name="product" value="GroupedProduct"/>
         </actionGroup>
 
-        <magentoCLI command="cron:run --group=index" stepKey="runCronIndexer"/>
+        <magentoCron groups="index" stepKey="runCronIndexer"/>
 
         <!--See related product in storefront-->
         <amOnPage url="{{GroupedProduct.sku}}.html" stepKey="goToStorefront"/>
