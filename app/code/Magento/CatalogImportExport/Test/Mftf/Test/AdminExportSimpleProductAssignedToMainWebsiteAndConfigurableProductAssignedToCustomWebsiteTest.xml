@@ -107,8 +107,8 @@
         <actionGroup ref="ExportAllProductsActionGroup" stepKey="exportCreatedProducts"/>
 
         <!-- Run cron -->
-        <magentoCLI command="cron:run" stepKey="runCron3"/>
-        <magentoCLI command="cron:run" stepKey="runCron4"/>
+        <magentoCron stepKey="runCron3"/>
+        <magentoCron stepKey="runCron4"/>
 
         <!-- Download product -->
         <actionGroup ref="DownloadFileByRowIndexActionGroup" stepKey="downloadCreatedProducts">

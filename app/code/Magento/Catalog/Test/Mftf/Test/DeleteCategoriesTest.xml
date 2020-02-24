@@ -76,7 +76,7 @@
 
         <!-- @TODO: Uncomment commented below code after MQE-903 is fixed -->
         <!-- Perform cli reindex. -->
-        <!--<magentoCLI command="indexer:reindex" stepKey="magentoCli"/>-->
+        <!--<magentoCron stepKey="magentoCli"/>-->
 
         <!-- Delete Default Root Category. -->
         <amOnPage url="{{AdminCategoryPage.url}}" stepKey="navigateToCategoryPageAfterCLIReindexCommand"/>

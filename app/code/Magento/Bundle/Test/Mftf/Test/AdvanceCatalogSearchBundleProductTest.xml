@@ -110,7 +110,7 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="simple2"/>
             </createData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <magentoCron stepKey="reindexBefore" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>

@@ -31,7 +31,7 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="simple2"/>
             </updateData>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex"/>
             <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>

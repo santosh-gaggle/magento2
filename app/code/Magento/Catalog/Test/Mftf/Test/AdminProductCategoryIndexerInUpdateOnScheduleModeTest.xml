@@ -94,7 +94,7 @@
 
         <!-- 4. Run cron to reindex -->
         <wait time="60" stepKey="waitForChanges"/>
-        <magentoCLI command="cron:run" stepKey="runCron"/>
+        <magentoCron stepKey="runCron"/>
 
         <!-- 5. Open category A on Storefront again -->
         <reloadPage stepKey="reloadCategoryA"/>
@@ -121,7 +121,7 @@
 
         <!-- 8. Run cron reindex (Ensure that at least one minute passed since last cron run) -->
         <wait time="60" stepKey="waitOneMinute"/>
-        <magentoCLI command="cron:run" stepKey="runCron1"/>
+        <magentoCron stepKey="runCron1"/>
 
         <!-- 9. Open category A on Storefront again -->
         <reloadPage stepKey="refreshCategoryAPage"/>
@@ -174,7 +174,7 @@
 
         <!-- 14. Run cron to reindex  (Ensure that at least one minute passed since last cron run) -->
         <wait time="60" stepKey="waitMinute"/>
-        <magentoCLI command="cron:run" stepKey="runCron2"/>
+        <magentoCron stepKey="runCron2"/>
 
         <!--  15. Open category B on Storefront  -->
         <actionGroup ref="StorefrontGoToCategoryPageActionGroup" stepKey="onPageCategoryB">
@@ -231,7 +231,7 @@
 
         <!-- 17.14. Run cron to reindex  (Ensure that at least one minute passed since last cron run) -->
         <wait time="60" stepKey="waitForOneMinute"/>
-        <magentoCLI command="cron:run" stepKey="runCron3"/>
+        <magentoCron stepKey="runCron3"/>
 
         <!--  17.15. Open category B on Storefront  -->
         <actionGroup ref="StorefrontGoToCategoryPageActionGroup" stepKey="openPageCategoryB">
@@ -290,7 +290,7 @@
 
         <!-- 18.14. Run cron to reindex  (Ensure that at least one minute passed since last cron run) -->
         <wait time="60" stepKey="waitExtraMinute"/>
-        <magentoCLI command="cron:run" stepKey="runCron4"/>
+        <magentoCron stepKey="runCron4"/>
 
         <!--  18.15. Open category B on Storefront  -->
         <actionGroup ref="StorefrontGoToCategoryPageActionGroup" stepKey="navigateToPageCategoryB">

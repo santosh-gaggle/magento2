@@ -60,8 +60,8 @@
              stepKey="seeSuccessMessage"/>
 
         <!-- Run cron twice -->
-        <magentoCLI command="cron:run" stepKey="runCron1"/>
-        <magentoCLI command="cron:run" stepKey="runCron2"/>
+        <magentoCron stepKey="runCron1"/>
+        <magentoCron stepKey="runCron2"/>
         <reloadPage stepKey="refreshPage"/>
         <waitForPageLoad stepKey="waitFormToReload1"/>
         <conditionalClick selector="{{AdminCartPriceRulesFormSection.manageCouponCodesHeader}}"

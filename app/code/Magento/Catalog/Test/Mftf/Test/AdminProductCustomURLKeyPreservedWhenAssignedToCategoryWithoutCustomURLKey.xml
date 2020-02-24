@@ -35,7 +35,7 @@
             </actionGroup>
 
             <!--Run full reindex and clear caches -->
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex"/>
             <magentoCLI command="cache:flush" arguments="full_page" stepKey="flushCache"/>
         </before>
         <after>

@@ -42,7 +42,7 @@
         <actionGroup ref="SaveProductFormActionGroup" stepKey="saveProduct"/>
 
         <!--Run re-index task-->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex"/>
 
         <!--Check product in category listing-->
         <amOnPage url="{{StorefrontCategoryPage.url($$createCategory.name$$)}}" stepKey="goToCategoryPage"/>
@@ -92,7 +92,7 @@
         </after>
 
         <!--Run re-index task-->
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex"/>
 
         <!--Check product in category listing-->
         <amOnPage url="{{StorefrontCategoryPage.url($$createCategoryOne.name$$)}}" stepKey="navigateToCategoryPage"/>

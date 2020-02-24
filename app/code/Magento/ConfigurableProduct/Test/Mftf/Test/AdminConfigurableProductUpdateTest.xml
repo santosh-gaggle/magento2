@@ -67,8 +67,8 @@
         <see selector="{{AdminProductMessagesSection.successMessage}}" userInput="Message is added to queue" stepKey="seeAttributeUpdateSuccessMsg"/>
 
         <!-- Run cron twice -->
-        <magentoCLI command="cron:run" arguments="--group=consumers" stepKey="runCron1"/>
-        <magentoCLI command="cron:run" arguments="--group=consumers" stepKey="runCron2"/>
+        <magentoCron groups="consumers" stepKey="runCron1"/>
+        <magentoCron groups="consumers" stepKey="runCron2"/>
         <magentoCron stepKey="reindex" groups="index"/>
 
         <!-- Check storefront for description -->

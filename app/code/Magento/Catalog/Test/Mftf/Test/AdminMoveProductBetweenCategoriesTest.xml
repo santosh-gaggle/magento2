@@ -114,7 +114,7 @@
         <see userInput="You saved the product." selector="{{CatalogProductsSection.messageSuccessSavedProduct}}" stepKey="seeSuccessMessage"/>
 
         <!-- Run cron -->
-        <magentoCLI command="cron:run" stepKey="runCron"/>
+        <magentoCron stepKey="runCron"/>
 
         <!-- Clear invalidated cache on System>Tools>Cache Management page  -->
         <amOnPage url="{{AdminCacheManagementPage.url}}" stepKey="onCachePage"/>
@@ -187,7 +187,7 @@
         <see userInput="You saved the product." selector="{{CatalogProductsSection.messageSuccessSavedProduct}}" stepKey="seeSaveMessage"/>
 
         <!-- Run cron -->
-        <magentoCLI command="cron:run" stepKey="runCron2"/>
+        <magentoCron stepKey="runCron2"/>
 
         <!-- Open frontend -->
         <amOnPage url="{{StorefrontHomePage.url}}" stepKey="onFrontendPage"/>

@@ -138,8 +138,8 @@
         <see userInput="$$productC.name$$" selector="{{StorefrontCategoryMainSection.productName}}" stepKey="seeProductInCategoryN"/>
 
         <!-- Run cron twice -->
-        <magentoCLI command="cron:run" stepKey="runCron"/>
-        <magentoCLI command="cron:run" stepKey="runCronAgain"/>
+        <magentoCron stepKey="runCron"/>
+        <magentoCron stepKey="runCronAgain"/>
 
         <!-- Open categories K, L, M, N on Storefront in order to make sure that new assigments are applied -->
         <!-- Category K contains only Products A, C -->
@@ -199,8 +199,8 @@
         <see userInput="$$productC.name$$" selector="{{StorefrontCategoryMainSection.productName}}" stepKey="productCOnCategoryN"/>
 
         <!-- Run cron twice -->
-        <magentoCLI command="cron:run" stepKey="firstCronRun"/>
-        <magentoCLI command="cron:run" stepKey="secondCronRun"/>
+        <magentoCron stepKey="firstCronRun"/>
+        <magentoCron stepKey="secondCronRun"/>
 
         <!-- Open categories K, L, M, N on Storefront in order to make sure that new assigments are applied -->
 

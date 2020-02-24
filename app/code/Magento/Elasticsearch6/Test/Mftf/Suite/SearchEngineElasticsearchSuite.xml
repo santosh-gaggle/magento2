@@ -9,7 +9,7 @@
     <suite name="SearchEngineElasticsearchSuite">
         <before>
             <magentoCLI stepKey="setSearchEngineToElasticsearch" command="config:set {{SearchEngineElasticsearchConfigData.path}} {{SearchEngineElasticsearchConfigData.value}}"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex"/>
             <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after></after>

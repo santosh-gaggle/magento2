@@ -9,7 +9,7 @@
     <suite name="SearchEngineMysqlSuite">
         <before>
             <magentoCLI stepKey="setSearchEngineToMysql" command="config:set {{SearchEngineMysqlConfigData.path}} {{SearchEngineMysqlConfigData.value}}"/>
-            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCron stepKey="reindex"/>
             <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after></after>
