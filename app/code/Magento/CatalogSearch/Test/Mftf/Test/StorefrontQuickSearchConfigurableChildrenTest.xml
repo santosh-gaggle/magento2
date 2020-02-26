@@ -98,6 +98,8 @@
         <actionGroup ref="ToggleProductEnabledActionGroup" stepKey="disableProduct"/>
         <actionGroup ref="SaveProductFormActionGroup" stepKey="saveProduct"/>
 
+        <magentoCron stepKey="reindexAfterProductDisable" groups="index"/>
+
         <amOnPage url="{{StorefrontHomePage.url}}" stepKey="goToHomePageAgain"/>
         <actionGroup ref="StorefrontCheckQuickSearchStringActionGroup" stepKey="searchStorefrontAgain">
             <argument name="phrase" value="$createConfigurableProduct.name$"/>

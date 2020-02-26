@@ -137,7 +137,7 @@
         <click selector="{{AdminProductFiltersSection.changeStatus}}" stepKey="ClickOnChangeStatusChangingView"/>
         <click selector="{{AdminProductFiltersSection.enable}}" stepKey="ClickOnEnable"/>
 
-        <!-- @TODO -->
+        <!-- @TODO Investigate whe it fails replaced to Cron Reindex -->
         <magentoCLI command="indexer:reindex" stepKey="reindex2"/>
         <magentoCLI command="cache:flush" stepKey="flushCache2"/>
 
