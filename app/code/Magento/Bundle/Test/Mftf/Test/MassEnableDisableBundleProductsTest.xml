@@ -120,9 +120,9 @@
         <click selector="{{AdminProductFiltersSection.disable}}" stepKey="ClickOnDisable"/>
         <waitForPageLoad stepKey="waitForPageloadToExecute"/>
 
-        <!--Clear Cache - reindex - resets products according to enabled/disabled view-->
+        <!-- @TODO Investigate whe it fails replaced to Cron Reindex -->
+        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
         <magentoCLI command="cache:flush" stepKey="flushCache"/>
-        <magentoCron stepKey="reindex" groups="index"/>
 
         <!--Confirm bundle products have been disabled-->
         <amOnPage url="{{BundleProduct.urlKey2}}.html" stepKey="GoToProductPage"/>
@@ -137,7 +137,9 @@
         <click selector="{{AdminProductFiltersSection.changeStatus}}" stepKey="ClickOnChangeStatusChangingView"/>
         <click selector="{{AdminProductFiltersSection.enable}}" stepKey="ClickOnEnable"/>
 
-        <magentoCron stepKey="reindexAgain" groups="index"/>
+        <!-- @TODO Investigate whe it fails replaced to Cron Reindex -->
+        <magentoCLI command="indexer:reindex" stepKey="reindex2"/>
+        <magentoCLI command="cache:flush" stepKey="flushCache2"/>
 
         <!--Confirm bundle products have been enabled-->
         <amOnPage url="{{BundleProduct.urlKey2}}.html" stepKey="GoToProductPageEnabled"/>

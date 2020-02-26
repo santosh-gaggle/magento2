@@ -33,7 +33,8 @@
                 <requiredEntity createDataKey="createBundleOption"/>
                 <requiredEntity createDataKey="createSimpleProduct"/>
             </createData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <!-- @TODO Investigate whe it fails replaced to Cron Reindex -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
         </before>
         <after>
             <!-- Delete bundle product data -->
