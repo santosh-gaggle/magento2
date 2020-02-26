@@ -36,8 +36,9 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="simple2"/>
             </createData>
-
-            <magentoCron stepKey="reindex" groups="index"/>
+            <!-- @TODO Investigate whe it fails replaced to Cron Reindex -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -76,7 +77,9 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="simple2"/>
             </createData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <!-- @TODO -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -110,7 +113,9 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="simple2"/>
             </createData>
-            <magentoCron stepKey="reindexBefore" groups="index"/>
+            <!-- @TODO -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -145,7 +150,9 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="simple2"/>
             </createData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <!-- @TODO -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -219,7 +226,9 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="simple2"/>
             </createData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <!-- @TODO -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -258,7 +267,8 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="simple2"/>
             </createData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -302,7 +312,9 @@
             <getData entity="GetProduct" stepKey="arg3">
                 <requiredEntity createDataKey="simple2"/>
             </getData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <!-- @TODO -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -350,7 +362,9 @@
             <getData entity="GetProduct" stepKey="arg3">
                 <requiredEntity createDataKey="simple2"/>
             </getData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <!-- @TODO -->
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </before>
         <after>
             <deleteData createDataKey="simple1" stepKey="deleteSimple1" before="deleteSimple2"/>
