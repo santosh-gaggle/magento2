@@ -77,6 +77,8 @@
                 <requiredEntity createDataKey="product"/>
                 <requiredEntity createDataKey="childProductHandle2"/>
             </createData>
+
+            <magentoCron stepKey="runCronIndex" groups="index"/>
         </before>
         <after>
             <deleteData createDataKey="simple1Handle" stepKey="deleteSimple1" before="deleteSimple2"/>
@@ -84,9 +86,6 @@
             <deleteData createDataKey="childProductHandle1" stepKey="deleteChildProduct1" before="delete"/>
             <deleteData createDataKey="childProductHandle2" stepKey="deleteChildProduct2" before="delete"/>
             <deleteData createDataKey="productAttributeHandle" stepKey="deleteProductDropDownAttribute"/>
-
-            <!-- Reindex invalidated indices after product attribute has been created/deleted -->
-            <magentoCron groups="index" stepKey="reindexInvalidatedIndices"/>
         </after>
     </test>
 </tests>
