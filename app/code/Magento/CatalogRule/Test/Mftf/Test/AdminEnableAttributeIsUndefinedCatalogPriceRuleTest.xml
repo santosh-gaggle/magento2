@@ -79,7 +79,11 @@
             <argument name="targetSelectValue" value="is undefined"/>
         </actionGroup>
         <click selector="{{AdminNewCatalogPriceRule.saveAndApply}}" stepKey="clickSaveAndApplyRules"/>
-        <magentoCron stepKey="reindex" groups="index"/>
+        <!-- @TODO Investigate whe it fails replaced to Cron Reindex -->
+        <wait time="60" stepKey="waitMinute"/>
+        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCLI command="cache:flush" stepKey="flushCache"/>
+        <magentoCLI command="cache:flush" stepKey="flushCache3"/>
 
         <!--Check Catalog Price Rule for first product-->
         <amOnPage url="{{StorefrontProductPage.url($$createFirstProduct.custom_attributes[url_key]$$)}}" stepKey="navigateToFirstProductPage"/>
