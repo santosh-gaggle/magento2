@@ -51,7 +51,7 @@
             </actionGroup>
             <deleteData createDataKey="category" stepKey="deleteCategory"/>
             <deleteData createDataKey="createSimpleProduct" stepKey="deleteSimpleProduct"/>
-            <actionGroup ref="logout" stepKey="logout"/>
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
         </after>
         <!-- Select Created Category-->
         <magentoCron stepKey="reindexBeforeFlow" groups="index"/>

@@ -62,7 +62,7 @@
             <deleteData createDataKey="createSecondCategory" stepKey="deleteSecondCategory"/>
             <deleteData createDataKey="createSecondProductAttribute" stepKey="deleteSecondProductAttribute"/>
 
-            <actionGroup ref="logout" stepKey="logout"/>
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
             <magentoCron stepKey="reindex" groups="index"/>
         </after>
 
@@ -79,7 +79,9 @@
             <argument name="targetSelectValue" value="is undefined"/>
         </actionGroup>
         <click selector="{{AdminNewCatalogPriceRule.saveAndApply}}" stepKey="clickSaveAndApplyRules"/>
-        <magentoCron stepKey="reindex" groups="index"/>
+        <wait time="60" stepKey="waitMinute"/>
+        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCLI command="cache:flush" stepKey="flushCache"/>
 
         <!--Check Catalog Price Rule for first product-->
         <amOnPage url="{{StorefrontProductPage.url($$createFirstProduct.custom_attributes[url_key]$$)}}" stepKey="navigateToFirstProductPage"/>
@@ -119,7 +121,9 @@
             <argument name="targetSelectValue" value="is undefined"/>
         </actionGroup>
         <click selector="{{AdminNewCatalogPriceRule.saveAndApply}}" stepKey="clickSaveAndApplyRules1"/>
-        <magentoCron stepKey="reindex1" groups="index"/>
+        <wait time="60" stepKey="waitForMinute"/>
+        <magentoCLI command="indexer:reindex" stepKey="reindex1"/>
+        <magentoCLI command="cache:flush" stepKey="flushCache1"/>
 
         <!--Check Catalog Price Rule for third product-->
         <amOnPage url="{{StorefrontProductPage.url($$createThirdProduct.custom_attributes[url_key]$$)}}" stepKey="navigateToThirdProductPage"/>

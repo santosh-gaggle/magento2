@@ -22,14 +22,12 @@
         <before>
             <createData entity="SimpleSubCategory" stepKey="simpleCategory"/>
             <magentoCron groups="index" stepKey="reindex"/>
-
-            <actionGroup ref="LoginAsAdmin" stepKey="logInAsAdmin"/>
+            <actionGroup ref="AdminLoginActionGroup" stepKey="logInAsAdmin"/>
         </before>
         <after>
-            <!-- Delete category and log out -->
-            <comment userInput="Delete category and log out" stepKey="deleteCategoryAndLogOut"/>
             <deleteData createDataKey="simpleCategory" stepKey="deleteCategory"/>
-            <actionGroup ref="logout" stepKey="logOutFromAdmin"/>
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logOutFromAdmin"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </after>
         <!-- Navigate to category details page -->
         <comment userInput="Navigate to category details page" stepKey="navigateToAdminCategoryPage"/>

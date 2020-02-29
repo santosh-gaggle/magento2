@@ -65,8 +65,9 @@
             </actionGroup>
             <deleteData createDataKey="category" stepKey="deletePreReqCategory"/>
             <deleteData createDataKey="product" stepKey="deleteFirstProduct"/>
-<magentoCron stepKey="reindex" groups="index"/>
-            <actionGroup ref="logout" stepKey="logout"/>
+            <magentoCLI stepKey="reindex" command="indexer:reindex"/>
+            <magentoCLI stepKey="flushCache" command="cache:flush"/>
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
         </after>
 
         <!--Create product-->

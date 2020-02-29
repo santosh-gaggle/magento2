@@ -43,8 +43,9 @@
             <actionGroup ref="GoToProductCatalogPageActionGroup" stepKey="goToProductCatalogPage"/>
             <actionGroup ref="ResetProductGridToDefaultViewActionGroup" stepKey="resetProductGridColumnsInitial"/>
             <actionGroup ref="ResetWebUrlOptionsActionGroup" stepKey="resetUrlOption"/>
-            <magentoCron stepKey="reindex" groups="index"/>
-            <actionGroup ref="logout" stepKey="logout"/>
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
         </after>
 
         <!--Assign Custom Website to Simple Product -->

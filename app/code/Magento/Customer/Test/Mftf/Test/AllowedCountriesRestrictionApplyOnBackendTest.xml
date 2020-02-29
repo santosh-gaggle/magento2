@@ -23,7 +23,7 @@
             <createData entity="SimpleProduct" stepKey="createSimpleProduct">
                 <requiredEntity createDataKey="createCategory"/>
             </createData>
-            <actionGroup ref="LoginActionGroup" stepKey="login"/>
+            <actionGroup ref="AdminLoginActionGroup" stepKey="login"/>
             <!--Create new website,store and store view-->
             <comment userInput="Create new website,store and store view" stepKey="createWebsite"/>
             <amOnPage url="{{AdminSystemStorePage.url}}" stepKey="goToAdminSystemStorePage"/>
@@ -42,7 +42,7 @@
             <!--Set account sharing option - Default value is 'Per Website'-->
             <comment userInput="Set account sharing option - Default value is 'Per Website'" stepKey="setAccountSharingOption"/>
             <createData entity="CustomerAccountSharingDefault" stepKey="setToAccountSharingToDefault"/>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
         </before>
         <after>
             <!--delete all created data and set main website country options to default-->
@@ -59,8 +59,9 @@
             </actionGroup>
             <actionGroup ref="SetWebsiteCountryOptionsToDefaultActionGroup" stepKey="setCountryOptionsToDefault"/>
             <createData entity="CustomerAccountSharingSystemValue" stepKey="setAccountSharingToSystemValue"/>
-            <actionGroup ref="logout" stepKey="logout"/>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+            <magentoCLI command="cache:flush" stepKey="flushCache"/>
         </after>
         <!--Check that all countries are allowed initially and get amount-->
         <comment userInput="Check that all countries are allowed initially and get amount" stepKey="checkAllCountriesAreAllowed"/>
