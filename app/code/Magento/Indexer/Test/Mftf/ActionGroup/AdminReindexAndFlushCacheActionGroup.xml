@@ -12,7 +12,7 @@
             <description>Run reindex and flush cache.</description>
         </annotations>
 
-        <magentoCLI command="indexer:reindex" stepKey="reindex"/>
+        <magentoCron stepKey="reindex"/>
         <magentoCLI command="cache:flush" stepKey="flushCache"/>
     </actionGroup>
 </actionGroups>
