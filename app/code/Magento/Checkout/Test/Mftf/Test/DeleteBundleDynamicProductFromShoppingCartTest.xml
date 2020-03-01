@@ -38,7 +38,7 @@
                 <requiredEntity createDataKey="bundleOption"/>
                 <requiredEntity createDataKey="createSimpleProduct"/>
             </createData>
-            <magentoCron stepKey="reindex" groups="index"/>
+            <magentoCLI command="indexer:reindex" stepKey="reindex"/>
         </before>
         <after>
             <!-- Delete category -->
