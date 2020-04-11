@@ -8,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Cookie\Test\Unit\Block;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Cookie\Block\RequireCookie;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template\Context;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class \Magento\Cookie\Test\Unit\Block\RequireCookieTest

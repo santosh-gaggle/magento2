@@ -1,19 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Cookie\Test\Unit\Helper;
 
-use PHPUnit\Framework\TestCase;
 use Magento\Cookie\Helper\Cookie;
-use Magento\Framework\App\Request\Http;
-use Magento\Framework\App\Helper\Context;
-use Magento\Store\Model\StoreManager;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\App\Request\Http;
 use Magento\Store\Model\Store;
-use PHPUnit\Framework\MockObject\MockObject;
+use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\Website;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class CookieTest extends TestCase
 {

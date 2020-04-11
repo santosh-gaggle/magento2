@@ -1,19 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Cookie\Test\Unit\Model\Config\Backend;
 
-use PHPUnit\Framework\TestCase;
-use Magento\Framework\Model\ResourceModel\AbstractResource;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Cookie\Model\Config\Backend\Domain;
 use Magento\Framework\Event\Manager;
-use Magento\Framework\Model\Context;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Session\Config\Validator\CookieDomainValidator;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test \Magento\Cookie\Model\Config\Backend\Domain

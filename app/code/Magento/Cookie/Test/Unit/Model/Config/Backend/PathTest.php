@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Unit test for Magento\Cookie\Model\Config\Backend\Path
  *
@@ -8,12 +8,12 @@
 
 namespace Magento\Cookie\Test\Unit\Model\Config\Backend;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Module\ModuleResource;
 use Magento\Cookie\Model\Config\Backend\Path;
+use Magento\Framework\Module\ModuleResource;
 use Magento\Framework\Session\Config\Validator\CookiePathValidator;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class PathTest extends TestCase
 {

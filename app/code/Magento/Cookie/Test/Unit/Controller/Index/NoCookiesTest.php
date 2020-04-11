@@ -1,19 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Cookie\Test\Unit\Controller\Index;
 
-use PHPUnit\Framework\TestCase;
 use Magento\Cookie\Controller\Index\NoCookies;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\DataObject;
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class NoCookiesTest extends TestCase
 {
