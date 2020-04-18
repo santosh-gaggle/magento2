@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,17 +6,17 @@
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Validator;
 
-use PHPUnit\Framework\TestCase;
-use Magento\CatalogImportExport\Model\Import\Product\Validator\TierPrice;
-use Magento\Customer\Api\GroupRepositoryInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\CatalogImportExport\Model\Import\Product\StoreResolver;
+use Magento\CatalogImportExport\Model\Import\Product\Validator\TierPrice;
+use Magento\Customer\Api\Data\GroupSearchResultsInterface;
+use Magento\Customer\Api\GroupRepositoryInterface;
+use Magento\Customer\Model\Data\Group;
 use Magento\Customer\Model\ResourceModel\GroupRepository;
 use Magento\Framework\Api\SearchCriteria;
-use Magento\Customer\Api\Data\GroupSearchResultsInterface;
-use Magento\Customer\Model\Data\Group;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class TierPriceTest extends TestCase
 {

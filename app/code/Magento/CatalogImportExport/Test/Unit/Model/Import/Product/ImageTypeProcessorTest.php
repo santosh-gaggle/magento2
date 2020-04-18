@@ -1,15 +1,15 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product;
 
-use PHPUnit\Framework\TestCase;
+use Magento\CatalogImportExport\Model\Import\Product\ImageTypeProcessor;
 use Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModel;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
-use Magento\CatalogImportExport\Model\Import\Product\ImageTypeProcessor;
+use PHPUnit\Framework\TestCase;
 
 class ImageTypeProcessorTest extends TestCase
 {

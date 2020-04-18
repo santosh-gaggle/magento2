@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,52 +6,52 @@
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import;
 
-use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\App\ResourceConnection;
-use Magento\ImportExport\Model\ResourceModel\Helper;
-use Magento\Framework\Stdlib\StringUtils;
-use Magento\Framework\Event\ManagerInterface;
-use Magento\CatalogInventory\Api\StockRegistryInterface;
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
-use Magento\CatalogInventory\Model\Spi\StockStateProviderInterface;
-use Magento\CatalogImportExport\Model\Import\Product\Option;
-use Magento\Framework\Stdlib\DateTime;
-use Magento\Eav\Model\Config;
-use Magento\CatalogImportExport\Model\Import\Product\Type\Factory;
-use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\Indexer\IndexerRegistry;
-use Psr\Log\LoggerInterface;
-use Magento\CatalogImportExport\Model\Import\Product\StoreResolver;
-use Magento\CatalogImportExport\Model\Import\Product\SkuProcessor;
-use Magento\CatalogImportExport\Model\Import\Product\CategoryProcessor;
-use Magento\CatalogImportExport\Model\Import\Product\Validator;
-use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
-use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Catalog\Model\Product\Url;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Framework\Json\Helper\Data;
+use Magento\Catalog\Model\Product\Url;
+use Magento\CatalogImportExport\Model\Import\Product;
+use Magento\CatalogImportExport\Model\Import\Product\CategoryProcessor;
+use Magento\CatalogImportExport\Model\Import\Product\ImageTypeProcessor;
+use Magento\CatalogImportExport\Model\Import\Product\Option;
+use Magento\CatalogImportExport\Model\Import\Product\SkuProcessor;
+use Magento\CatalogImportExport\Model\Import\Product\StoreResolver;
 use Magento\CatalogImportExport\Model\Import\Product\TaxClassProcessor;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Eav\Model\Entity\Type;
-use Magento\Eav\Model\Entity\Attribute\Set;
-use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection;
 use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType;
-use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\CatalogImportExport\Model\Import\Product\Type\Factory;
+use Magento\CatalogImportExport\Model\Import\Product\Validator;
 use Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModel;
 use Magento\CatalogImportExport\Model\Import\Uploader;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\CatalogImportExport\Model\Import\Product;
-use Magento\CatalogImportExport\Model\Import\Product\ImageTypeProcessor;
+use Magento\CatalogInventory\Api\StockConfigurationInterface;
+use Magento\CatalogInventory\Api\StockRegistryInterface;
+use Magento\CatalogInventory\Model\Spi\StockStateProviderInterface;
+use Magento\Eav\Model\Config;
+use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Eav\Model\Entity\Attribute\Set;
+use Magento\Eav\Model\Entity\Type;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\EntityManager\EntityMetadata;
+use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\WriteInterface;
+use Magento\Framework\Indexer\IndexerRegistry;
+use Magento\Framework\Json\Helper\Data;
+use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
+use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
+use Magento\Framework\Stdlib\DateTime;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\ImportExport\Model\Import;
+use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportExport\Model\ResourceModel\Helper;
+use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\LoggerInterface;
 
 /**
  * Test import entity product model

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,8 +6,8 @@
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
-use PHPUnit\Framework\TestCase;
 use Magento\CatalogImportExport\Model\Import\Product\Type\Virtual;
+use PHPUnit\Framework\TestCase;
 
 class VirtualTest extends TestCase
 {

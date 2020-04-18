@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -23,6 +23,7 @@ class StubProduct extends Product
      * @param array $rowCategories
      * @param int $productId
      * @return bool
+     * phpcs:disable Generic.CodeAnalysis.UselessOverridingMethod
      */
     public function updateDataWithCategoryColumns(&$dataRow, &$rowCategories, $productId)
     {

@@ -1,29 +1,29 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Export;
 
-use PHPUnit\Framework\TestCase;
-use Magento\Framework\Stdlib\DateTime\Timezone;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Eav\Model\Config;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Store\Model\StoreManagerInterface;
-use Psr\Log\LoggerInterface;
-use Magento\Eav\Model\Entity\Collection\AbstractCollection;
-use Magento\ImportExport\Model\Export\ConfigInterface;
-use Magento\CatalogImportExport\Model\Export\Product\Type\Factory;
 use Magento\Catalog\Model\Product\LinkTypeProvider;
-use Magento\CatalogImportExport\Model\Export\RowCustomizer\Composite;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
 use Magento\CatalogImportExport\Model\Export\Product;
+use Magento\CatalogImportExport\Model\Export\Product\Type\Factory;
+use Magento\CatalogImportExport\Model\Export\RowCustomizer\Composite;
+use Magento\Eav\Model\Config;
+use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Eav\Model\Entity\Type;
-use Magento\Store\Model\StoreManager;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Logger\Monolog;
+use Magento\Framework\Stdlib\DateTime\Timezone;
+use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
+use Magento\ImportExport\Model\Export\ConfigInterface;
 use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManager;
+use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
 /**
  * @SuppressWarnings(PHPMD)

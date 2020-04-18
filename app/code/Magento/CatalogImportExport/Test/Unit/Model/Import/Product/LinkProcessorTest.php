@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,20 +6,20 @@
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product;
 
-use PHPUnit\Framework\TestCase;
-use Magento\CatalogImportExport\Model\Import\Product\LinkProcessor;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType;
-use Magento\ImportExport\Model\ResourceModel\Helper;
 use Magento\Catalog\Model\ResourceModel\Product\Link;
-use Magento\CatalogImportExport\Model\Import\Product\SkuProcessor;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\CatalogImportExport\Model\Import\Product;
+use Magento\CatalogImportExport\Model\Import\Product\LinkProcessor;
+use Magento\CatalogImportExport\Model\Import\Product\SkuProcessor;
+use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
-use Magento\ImportExport\Model\ResourceModel\Import\Data;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\ImportExport\Model\ResourceModel\Helper;
+use Magento\ImportExport\Model\ResourceModel\Import\Data;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Copyright © Magento, Inc. All rights reserved.
@@ -6,20 +6,20 @@
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
-use PHPUnit\Framework\TestCase;
 use Magento\CatalogImportExport\Model\Import\Product;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\CatalogImportExport\Model\Import\Product\Type\Simple;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\DB\Select;
-use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection;
-use Magento\Eav\Model\Entity\Attribute\Set;
-use Magento\Eav\Model\Entity\Attribute;
-use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
 use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType as AbstractType;
+use Magento\CatalogImportExport\Model\Import\Product\Type\Simple;
+use Magento\Eav\Model\Entity\Attribute;
+use Magento\Eav\Model\Entity\Attribute\Set;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Adapter\Pdo\Mysql;
+use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for import product AbstractType class
@@ -160,15 +160,13 @@ class AbstractTypeTest extends TestCase
                 ['main_table.attribute_id', 'main_table.attribute_code'],
                 [
                     [
-                        'in' =>
-                            [
+                        'in' => [
                                 'attribute_id',
                                 'boolean_attribute',
                             ],
                     ],
                     [
-                        'in' =>
-                            [
+                        'in' => [
                                 'related_tgtr_position_behavior',
                                 'related_tgtr_position_limit',
                                 'upsell_tgtr_position_behavior',

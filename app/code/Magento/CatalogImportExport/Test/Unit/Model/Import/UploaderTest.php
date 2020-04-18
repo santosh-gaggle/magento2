@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Copyright © Magento, Inc. All rights reserved.
@@ -6,22 +6,22 @@
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import;
 
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-use PHPUnit\Framework\TestCase;
-use Magento\MediaStorage\Helper\File\Storage\Database;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\MediaStorage\Helper\File\Storage;
-use Magento\Framework\Image\AdapterFactory;
-use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
-use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\File\ReadFactory;
-use Magento\Framework\Math\Random;
 use Magento\CatalogImportExport\Model\Import\Uploader;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Filesystem\File\Read;
-use Magento\Framework\Filesystem\DriverPool;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\Driver\Http;
 use Magento\Framework\Filesystem\Driver\Https;
+use Magento\Framework\Filesystem\DriverPool;
+use Magento\Framework\Filesystem\File\Read;
+use Magento\Framework\Filesystem\File\ReadFactory;
+use Magento\Framework\Image\AdapterFactory;
+use Magento\Framework\Math\Random;
+use Magento\MediaStorage\Helper\File\Storage;
+use Magento\MediaStorage\Helper\File\Storage\Database;
+use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -99,7 +99,7 @@ class UploaderTest extends TestCase
         $this->directoryMock = $this->getMockBuilder(WriteInterface::class)
             ->setMethods(['writeFile', 'getRelativePath', 'isWritable', 'getAbsolutePath'])
             ->disableOriginalConstructor()
-            ->getMock();
+            ->getMockForAbstractClass();
 
         $this->filesystem = $this->getMockBuilder(Filesystem::class)
             ->disableOriginalConstructor()

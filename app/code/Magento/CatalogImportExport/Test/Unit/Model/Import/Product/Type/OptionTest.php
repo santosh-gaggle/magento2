@@ -1,31 +1,31 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
-use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
-use Magento\CatalogImportExport\Model\Import\Product\Option;
-use Magento\CatalogImportExport\Model\Import\Product;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Helper\Data;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Model\ResourceModel\Product\Option\Value\Collection;
+use Magento\CatalogImportExport\Model\Import\Product;
+use Magento\CatalogImportExport\Model\Import\Product\Option;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ResourceConnection;
-use Magento\ImportExport\Model\ResourceModel\Helper;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
+use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DB\Select;
-use PHPUnit\Framework\MockObject\MockObject;
+use Magento\Framework\EntityManager\EntityMetadata;
+use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\ImportExport\Model\Import;
+use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportExport\Model\ResourceModel\Helper;
+use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
+use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\LoggerInterface;
 
 /**
  * Test class for import product options module
@@ -826,8 +826,7 @@ class OptionTest extends AbstractImportTestCase
             'with_store_view_code' => [
                 '$rowData' => [
                     'store_view_code' => '',
-                    'custom_options' =>
-                        'name=Test Field Title,type=field,required=1;sku=1-text,price=0,price_type=fixed'
+                    'custom_options' => 'name=Test Field Title,type=field,required=1;sku=1-text,price=0,price_type=fixed'
                 ],
                 '$responseData' => [
                     'store_view_code' => '',
@@ -848,8 +847,7 @@ class OptionTest extends AbstractImportTestCase
             ],
             'without_store_view_code' => [
                 '$rowData' => [
-                    'custom_options' =>
-                        'name=Test Field Title,type=field,required=1;sku=1-text,price=0,price_type=fixed'
+                    'custom_options' => 'name=Test Field Title,type=field,required=1;sku=1-text,price=0,price_type=fixed'
                 ],
                 '$responseData' => [
                     'custom_options' => [

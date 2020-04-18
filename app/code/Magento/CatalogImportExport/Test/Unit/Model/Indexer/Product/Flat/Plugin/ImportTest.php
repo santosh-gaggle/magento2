@@ -1,16 +1,16 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Indexer\Product\Flat\Plugin;
 
-use PHPUnit\Framework\TestCase;
 use Magento\Catalog\Model\Indexer\Product\Flat\Processor;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\CatalogImportExport\Model\Indexer\Product\Flat\Plugin\Import;
 use Magento\Catalog\Model\Indexer\Product\Flat\State;
+use Magento\CatalogImportExport\Model\Indexer\Product\Flat\Plugin\Import;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class ImportTest extends TestCase
 {
