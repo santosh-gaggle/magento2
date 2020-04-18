@@ -5,7 +5,9 @@
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Export;
 
-class StubProduct extends \Magento\CatalogImportExport\Model\Export\Product
+use Magento\CatalogImportExport\Model\Export\Product;
+
+class StubProduct extends Product
 {
     /**
      * Disable parent constructor

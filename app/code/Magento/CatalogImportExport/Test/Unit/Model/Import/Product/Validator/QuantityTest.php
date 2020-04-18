@@ -5,21 +5,19 @@
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\Quantity;
 use Magento\ImportExport\Model\Import;
 
-/**
- * Class QuantityTest
- */
-class QuantityTest extends \PHPUnit\Framework\TestCase
+class QuantityTest extends TestCase
 {
     /**
      * @var Quantity
      */
     private $quantity;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->quantity = new Quantity();
 

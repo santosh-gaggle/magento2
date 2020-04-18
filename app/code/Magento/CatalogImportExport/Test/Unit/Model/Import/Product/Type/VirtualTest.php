@@ -6,7 +6,10 @@
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
-class VirtualTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+use Magento\CatalogImportExport\Model\Import\Product\Type\Virtual;
+
+class VirtualTest extends TestCase
 {
     /**
      * Test for method prepareAttributesWithDefaultValueForSave
@@ -14,7 +17,7 @@ class VirtualTest extends \PHPUnit\Framework\TestCase
     public function testPrepareAttributesWithDefaultValueForSave()
     {
         $virtualModelMock = $this->createPartialMock(
-            \Magento\CatalogImportExport\Model\Import\Product\Type\Virtual::class,
+            Virtual::class,
             []
         );
 

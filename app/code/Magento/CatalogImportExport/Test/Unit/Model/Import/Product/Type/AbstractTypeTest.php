@@ -6,6 +6,18 @@
  */
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
+use PHPUnit\Framework\TestCase;
+use Magento\CatalogImportExport\Model\Import\Product;
+use PHPUnit\Framework\MockObject\MockObject;
+use Magento\CatalogImportExport\Model\Import\Product\Type\Simple;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Select;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection;
+use Magento\Eav\Model\Entity\Attribute\Set;
+use Magento\Eav\Model\Entity\Attribute;
+use Magento\Framework\DB\Adapter\Pdo\Mysql;
+use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
 use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType as AbstractType;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 
@@ -15,15 +27,15 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class AbstractTypeTest extends \PHPUnit\Framework\TestCase
+class AbstractTypeTest extends TestCase
 {
     /**
-     * @var \Magento\CatalogImportExport\Model\Import\Product|\PHPUnit_Framework_MockObject_MockObject
+     * @var Product|MockObject
      */
     protected $entityModel;
 
     /**
-     * @var \Magento\CatalogImportExport\Model\Import\Product\Type\Simple
+     * @var Simple
      */
     protected $simpleType;
 
@@ -33,38 +45,38 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
     protected $objectManagerHelper;
 
     /**
-     * @var \Magento\Framework\App\ResourceConnection|\PHPUnit_Framework_MockObject_MockObject
+     * @var ResourceConnection|MockObject
      */
     protected $resource;
 
     /**
-     * @var \Magento\Framework\DB\Adapter\AdapterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AdapterInterface|MockObject
      */
     protected $connection;
 
     /**
-     * @var \Magento\Framework\DB\Select|\PHPUnit_Framework_MockObject_MockObject
+     * @var Select|MockObject
      */
     protected $select;
 
     /**
-     * @var AbstractType|\PHPUnit_Framework_MockObject_MockObject
+     * @var AbstractType|MockObject
      */
     protected $abstractType;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->entityModel = $this->createMock(\Magento\CatalogImportExport\Model\Import\Product::class);
+        $this->entityModel = $this->createMock(Product::class);
         $attrSetColFactory = $this->createPartialMock(
             \Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory::class,
             ['create']
         );
-        $attrSetCollection = $this->createMock(\Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection::class);
+        $attrSetCollection = $this->createMock(Collection::class);
         $attrColFactory = $this->createPartialMock(
             \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory::class,
             ['create']
         );
-        $attributeSet = $this->createMock(\Magento\Eav\Model\Entity\Attribute\Set::class);
+        $attributeSet = $this->createMock(Set::class);
         $attrCollection = $this->createPartialMock(
             \Magento\Eav\Model\ResourceModel\Entity\Attribute\Collection::class,
             [
@@ -73,7 +85,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
             ]
         );
         $attribute = $this->createPartialMock(
-            \Magento\Eav\Model\Entity\Attribute::class,
+            Attribute::class,
             [
                 'getAttributeCode',
                 'getId',
@@ -171,7 +183,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
             ->willReturn([$attribute1, $attribute2, $attribute3]);
 
         $this->connection = $this->createPartialMock(
-            \Magento\Framework\DB\Adapter\Pdo\Mysql::class,
+            Mysql::class,
             [
                 'select',
                 'fetchAll',
@@ -183,7 +195,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
             ]
         );
         $this->select = $this->createPartialMock(
-            \Magento\Framework\DB\Select::class,
+            Select::class,
             [
                 'from',
                 'where',
@@ -195,7 +207,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
         $this->select->expects($this->any())->method('where')->will($this->returnSelf());
         $this->select->expects($this->any())->method('joinLeft')->will($this->returnSelf());
         $this->connection->expects($this->any())->method('select')->will($this->returnValue($this->select));
-        $connection = $this->createMock(\Magento\Framework\DB\Adapter\Pdo\Mysql::class);
+        $connection = $this->createMock(Mysql::class);
         $connection->expects($this->any())->method('quoteInto')->will($this->returnValue('query'));
         $this->select->expects($this->any())->method('getConnection')->willReturn($connection);
         $this->connection->expects($this->any())->method('insertOnDuplicate')->willReturnSelf();
@@ -207,7 +219,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
             ->will($this->returnValue($entityAttributes));
 
         $this->resource = $this->createPartialMock(
-            \Magento\Framework\App\ResourceConnection::class,
+            ResourceConnection::class,
             [
                 'getConnection',
                 'getTableName',
@@ -222,7 +234,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
 
         $this->objectManagerHelper = new ObjectManagerHelper($this);
         $this->simpleType = $this->objectManagerHelper->getObject(
-            \Magento\CatalogImportExport\Model\Import\Product\Type\Simple::class,
+            Simple::class,
             [
                 'attrSetColFac' => $attrSetColFactory,
                 'prodAttrColFac' => $attrColFactory,
@@ -281,7 +293,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
             $this->simpleType,
             '_attributes',
             [
-                $rowData[\Magento\CatalogImportExport\Model\Import\Product::COL_ATTR_SET] => [],
+                $rowData[Product::COL_ATTR_SET] => [],
             ]
         );
         $this->assertTrue($this->simpleType->isRowValid($rowData, $rowNum));
@@ -297,7 +309,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
         $this->entityModel->expects($this->any())->method('getRowScope')->willReturn(1);
         $this->entityModel->expects($this->once())->method('addRowError')
             ->with(
-                \Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface::ERROR_VALUE_IS_REQUIRED,
+                RowValidatorInterface::ERROR_VALUE_IS_REQUIRED,
                 1,
                 'attr_code'
             )
@@ -306,7 +318,7 @@ class AbstractTypeTest extends \PHPUnit\Framework\TestCase
             $this->simpleType,
             '_attributes',
             [
-                $rowData[\Magento\CatalogImportExport\Model\Import\Product::COL_ATTR_SET] => [
+                $rowData[Product::COL_ATTR_SET] => [
                     'attr_code' => [
                         'is_required' => true,
                     ],
