@@ -1,8 +1,9 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Validator;
 
@@ -40,9 +41,9 @@ class TierPriceTest extends TestCase
         $this->groupRepositoryInterface = $this->createMock(
             GroupRepository::class
         );
-        $this->searchCriteriaSearch = $this->createMock(SearchCriteria::class);
+        $searchCriteriaSearch = $this->createMock(SearchCriteria::class);
         $this->searchCriteriaBuilder = $this->createMock(SearchCriteriaBuilder::class);
-        $this->searchCriteriaBuilder->expects($this->any())->method('create')->willReturn($this->searchCriteriaSearch);
+        $this->searchCriteriaBuilder->expects($this->any())->method('create')->willReturn($searchCriteriaSearch);
         $this->storeResolver = $this->createMock(
             StoreResolver::class
         );

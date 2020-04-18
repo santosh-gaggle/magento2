@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -826,7 +828,8 @@ class OptionTest extends AbstractImportTestCase
             'with_store_view_code' => [
                 '$rowData' => [
                     'store_view_code' => '',
-                    'custom_options' => 'name=Test Field Title,type=field,required=1;sku=1-text,price=0,price_type=fixed'
+                    'custom_options' => 'name=Test Field Title,'
+                        . 'type=field,required=1;sku=1-text,price=0,price_type=fixed'
                 ],
                 '$responseData' => [
                     'store_view_code' => '',
@@ -847,7 +850,8 @@ class OptionTest extends AbstractImportTestCase
             ],
             'without_store_view_code' => [
                 '$rowData' => [
-                    'custom_options' => 'name=Test Field Title,type=field,required=1;sku=1-text,price=0,price_type=fixed'
+                    'custom_options' => 'name=Test Field Title,'
+                        . 'type=field,required=1;sku=1-text,price=0,price_type=fixed'
                 ],
                 '$responseData' => [
                     'custom_options' => [
