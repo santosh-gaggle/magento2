@@ -108,7 +108,7 @@ class Interceptor extends EntityAbstract
             'parameters' => $parameters,
             'body' => str_replace(
                 [
-                    '%methodName%',
+                    '%method%',
                     '%return%',
                     '%parameters%'
                 ],
@@ -118,8 +118,8 @@ class Interceptor extends EntityAbstract
                     $this->_getParameterList($parameters)
                 ],
                 <<<'METHOD_BODY'
-$pluginInfo = $this->pluginList->getNext($this->subjectType, '%methodName%');
-%return%$pluginInfo ? $this->___callPlugins('%methodName%', func_get_args(), $pluginInfo) : parent::%methodName%(%parameters%);
+$pluginInfo = $this->pluginList->getNext($this->subjectType, '%method%');
+%return%$pluginInfo ? $this->___callPlugins('%method%', func_get_args(), $pluginInfo) : parent::%method%(%parameters%);
 METHOD_BODY
             ),
                 'returnType' => $returnTypeValue,
