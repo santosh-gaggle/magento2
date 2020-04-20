@@ -9,7 +9,7 @@ namespace Magento\Framework\Interception\Test\Unit\Code\Generator;
 use Composer\Autoload\ClassLoader;
 use Magento\Framework\Code\Generator\Io;
 use Magento\Framework\Interception\Code\Generator\Interceptor;
-use \PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
 
 class InterceptorTest extends \PHPUnit\Framework\TestCase
 {
@@ -55,8 +55,7 @@ class InterceptorTest extends \PHPUnit\Framework\TestCase
             ])
             ->getMock();
 
-        $this->ioGenerator
-            ->method('generateResultFileName')
+        $this->ioGenerator->method('generateResultFileName')
             ->with('\\' . $resultClassName)
             ->willReturn($fileName . '.php');
 
