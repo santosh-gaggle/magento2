@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Invalid state exception
  *
@@ -7,17 +7,18 @@
  */
 namespace Magento\Framework\Exception\Test\Unit\State;
 
-use \Magento\Framework\Exception\State\InvalidTransitionException;
+use Magento\Framework\Exception\State\InvalidTransitionException;
 use Magento\Framework\Phrase;
+use PHPUnit\Framework\TestCase;
 
-class InvalidTransitionExceptionTest extends \PHPUnit\Framework\TestCase
+class InvalidTransitionExceptionTest extends TestCase
 {
     /**
      * @return void
      */
     public function testConstructor()
     {
-        $instanceClass = \Magento\Framework\Exception\State\InvalidTransitionException::class;
+        $instanceClass = InvalidTransitionException::class;
         $message =  'message %1 %2';
         $params = [
             'parameter1',

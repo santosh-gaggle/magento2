@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Input mismatch exception
  *
@@ -7,17 +7,18 @@
  */
 namespace Magento\Framework\Exception\Test\Unit\State;
 
-use \Magento\Framework\Exception\State\InputMismatchException;
+use Magento\Framework\Exception\State\InputMismatchException;
 use Magento\Framework\Phrase;
+use PHPUnit\Framework\TestCase;
 
-class InputMismatchExceptionTest extends \PHPUnit\Framework\TestCase
+class InputMismatchExceptionTest extends TestCase
 {
     /**
      * @return void
      */
     public function testConstructor()
     {
-        $instanceClass = \Magento\Framework\Exception\State\InputMismatchException::class;
+        $instanceClass = InputMismatchException::class;
         $message =  'message %1 %2';
         $params = [
             'parameter1',

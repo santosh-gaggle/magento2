@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Expired exception
  *
@@ -7,20 +7,18 @@
  */
 namespace Magento\Framework\Exception\Test\Unit\State;
 
-use \Magento\Framework\Exception\State\ExpiredException;
+use Magento\Framework\Exception\State\ExpiredException;
 use Magento\Framework\Phrase;
+use PHPUnit\Framework\TestCase;
 
-/**
- * Class ExpiredException
- */
-class ExpiredExceptionTest extends \PHPUnit\Framework\TestCase
+class ExpiredExceptionTest extends TestCase
 {
     /**
      * @return void
      */
     public function testConstructor()
     {
-        $instanceClass = \Magento\Framework\Exception\State\ExpiredException::class;
+        $instanceClass = ExpiredException::class;
         $message =  'message %1 %2';
         $params = [
             'parameter1',
