@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,26 +6,30 @@
 
 namespace Magento\Framework\Controller\Test\Unit\Router\Route;
 
-use \Magento\Framework\Controller\Router\Route\Factory;
-
+use Magento\Framework\App\RouterInterface;
+use Magento\Framework\Controller\Router\Route\Factory;
 use Magento\Framework\Controller\Router\Route\Factory as RouteFactory;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
-class FactoryTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+
+class FactoryTest extends TestCase
 {
     /**
-     * @var ObjectManager|\PHPUnit_Framework_MockObject_MockObject
+     * @var ObjectManager|MockObject
      */
     protected $objectManager;
 
     /**
-     * @var RouteFactory|\PHPUnit_Framework_MockObject_MockObject
+     * @var RouteFactory|MockObject
      */
     protected $factory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->objectManager = $this->createMock(\Magento\Framework\ObjectManagerInterface::class);
+        $this->objectManager = $this->createMock(ObjectManagerInterface::class);
 
         $objectManager = new ObjectManager($this);
         $this->factory = $objectManager->getObject(
@@ -45,7 +49,7 @@ class FactoryTest extends \PHPUnit\Framework\TestCase
         $routeClass = 'router';
         $paramRoute = 'route';
 
-        $router = $this->getMockBuilder(\Magento\Framework\App\RouterInterface::class)
+        $router = $this->getMockBuilder(RouterInterface::class)
             ->setMockClassName($routeClass)
             ->getMock();
 
@@ -57,16 +61,16 @@ class FactoryTest extends \PHPUnit\Framework\TestCase
         $result = $this->factory->createRoute($routeClass, $paramRoute);
 
         $this->assertInstanceOf($routeClass, $result);
-        $this->assertInstanceOf(\Magento\Framework\App\RouterInterface::class, $result);
+        $this->assertInstanceOf(RouterInterface::class, $result);
     }
 
     /**
      * @test
-     * @expectedException \LogicException
      * @return void
      */
     public function testCreateRouteNegative()
     {
+        $this->expectException('LogicException');
         $this->objectManager->expects($this->once())
             ->method('create')
             ->will($this->returnValue(new \StdClass()));
