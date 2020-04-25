@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -15,26 +15,28 @@ use Magento\Framework\EntityManager\Operation\Create;
 use Magento\Framework\EntityManager\Operation\Create\CreateMain;
 use Magento\Framework\EntityManager\Sequence\SequenceApplier;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class CreateTest extends \PHPUnit\Framework\TestCase
+class CreateTest extends TestCase
 {
     /**
-     * @var MetadataPool|\PHPUnit_Framework_MockObject_MockObject
+     * @var MetadataPool|MockObject
      */
     private $metadataPool;
 
     /**
-     * @var ResourceConnection|\PHPUnit_Framework_MockObject_MockObject
+     * @var ResourceConnection|MockObject
      */
     private $resourceConnection;
 
     /**
-     * @var CreateMain|\PHPUnit_Framework_MockObject_MockObject
+     * @var CreateMain|MockObject
      */
     private $createMain;
 
     /**
-     * @var SequenceApplier|\PHPUnit_Framework_MockObject_MockObject
+     * @var SequenceApplier|MockObject
      */
     private $sequenceApplier;
 
@@ -43,7 +45,7 @@ class CreateTest extends \PHPUnit\Framework\TestCase
      */
     private $create;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->metadataPool = $this->getMockBuilder(MetadataPool::class)
             ->disableOriginalConstructor()
@@ -66,11 +68,9 @@ class CreateTest extends \PHPUnit\Framework\TestCase
         ]);
     }
 
-    /**
-     * @expectedException \Magento\Framework\Exception\AlreadyExistsException
-     */
     public function testDuplicateExceptionProcessingOnExecute()
     {
+        $this->expectException('Magento\Framework\Exception\AlreadyExistsException');
         $metadata = $this->createMock(EntityMetadataInterface::class);
         $this->metadataPool->expects($this->any())->method('getMetadata')->willReturn($metadata);
 
