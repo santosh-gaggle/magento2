@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Magento\Framework\Phrase\Test\Unit\Renderer;
 
+use Magento\Framework\Phrase\Renderer\Translate as PhraseRenderer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate;
 use Magento\Framework\TranslateInterface;
@@ -20,7 +23,7 @@ class TranslateTest extends TestCase
     protected $_translator;
 
     /**
-     * @var \Magento\Framework\Phrase\Renderer\Translate
+     * @var PhraseRenderer
      */
     protected $_renderer;
 
@@ -37,7 +40,7 @@ class TranslateTest extends TestCase
 
         $objectManagerHelper = new ObjectManager($this);
         $this->_renderer = $objectManagerHelper->getObject(
-            \Magento\Framework\Phrase\Renderer\Translate::class,
+            PhraseRenderer::class,
             [
                 'translator' => $this->_translator,
                 'logger' => $this->loggerMock
