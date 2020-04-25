@@ -1,18 +1,21 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Math\Test\Unit;
 
-class DivisionTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\Math\Division;
+use PHPUnit\Framework\TestCase;
+
+class DivisionTest extends TestCase
 {
     /**
      * @dataProvider getExactDivisionDataProvider
      */
     public function testGetExactDivision($dividend, $divisor, $expected)
     {
-        $mathDivision = new \Magento\Framework\Math\Division();
+        $mathDivision = new Division();
         $remainder = $mathDivision->getExactDivision($dividend, $divisor);
         $this->assertEquals($expected, $remainder);
     }
