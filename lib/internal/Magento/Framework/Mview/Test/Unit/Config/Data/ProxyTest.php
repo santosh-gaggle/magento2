@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,36 +6,40 @@
 
 namespace Magento\Framework\Mview\Test\Unit\Config\Data;
 
-use \Magento\Framework\Mview\Config\Data\Proxy;
+use Magento\Framework\Mview\Config\Data;
+use Magento\Framework\Mview\Config\Data\Proxy;
+use Magento\Framework\ObjectManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class ProxyTest extends \PHPUnit\Framework\TestCase
+class ProxyTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\Mview\Config\Data\Proxy
+     * @var Proxy
      */
     protected $model;
 
     /**
-     * @var \Magento\Framework\ObjectManagerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ObjectManagerInterface|MockObject
      */
     protected $objectManagerMock;
 
     /**
-     * @var \Magento\Framework\Mview\Config\Data|\PHPUnit_Framework_MockObject_MockObject
+     * @var Data|MockObject
      */
     protected $dataMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->objectManagerMock = $this->createMock(\Magento\Framework\ObjectManagerInterface::class);
-        $this->dataMock = $this->createMock(\Magento\Framework\Mview\Config\Data::class);
+        $this->objectManagerMock = $this->createMock(ObjectManagerInterface::class);
+        $this->dataMock = $this->createMock(Data::class);
     }
 
     public function testMergeShared()
     {
         $this->objectManagerMock->expects($this->once())
             ->method('get')
-            ->with(\Magento\Framework\Mview\Config\Data::class)
+            ->with(Data::class)
             ->will($this->returnValue($this->dataMock));
         $this->dataMock->expects($this->once())
             ->method('merge')
@@ -43,7 +47,7 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
 
         $this->model = new Proxy(
             $this->objectManagerMock,
-            \Magento\Framework\Mview\Config\Data::class,
+            Data::class,
             true
         );
 
@@ -54,7 +58,7 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
     {
         $this->objectManagerMock->expects($this->once())
             ->method('create')
-            ->with(\Magento\Framework\Mview\Config\Data::class)
+            ->with(Data::class)
             ->will($this->returnValue($this->dataMock));
         $this->dataMock->expects($this->once())
             ->method('merge')
@@ -62,7 +66,7 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
 
         $this->model = new Proxy(
             $this->objectManagerMock,
-            \Magento\Framework\Mview\Config\Data::class,
+            Data::class,
             false
         );
 
@@ -73,7 +77,7 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
     {
         $this->objectManagerMock->expects($this->once())
             ->method('get')
-            ->with(\Magento\Framework\Mview\Config\Data::class)
+            ->with(Data::class)
             ->will($this->returnValue($this->dataMock));
         $this->dataMock->expects($this->once())
             ->method('get')
@@ -82,7 +86,7 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
 
         $this->model = new Proxy(
             $this->objectManagerMock,
-            \Magento\Framework\Mview\Config\Data::class,
+            Data::class,
             true
         );
 
@@ -93,7 +97,7 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
     {
         $this->objectManagerMock->expects($this->once())
             ->method('create')
-            ->with(\Magento\Framework\Mview\Config\Data::class)
+            ->with(Data::class)
             ->will($this->returnValue($this->dataMock));
         $this->dataMock->expects($this->once())
             ->method('get')
@@ -102,7 +106,7 @@ class ProxyTest extends \PHPUnit\Framework\TestCase
 
         $this->model = new Proxy(
             $this->objectManagerMock,
-            \Magento\Framework\Mview\Config\Data::class,
+            Data::class,
             false
         );
 
