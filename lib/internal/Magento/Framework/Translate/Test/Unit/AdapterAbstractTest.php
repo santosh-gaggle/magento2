@@ -1,20 +1,24 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Translate\Test\Unit;
 
-class AdapterAbstractTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\Translate\AbstractAdapter;
+use Magento\Framework\Translate\Adapter;
+use PHPUnit\Framework\TestCase;
+
+class AdapterAbstractTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\Translate\AbstractAdapter
+     * @var AbstractAdapter
      */
     protected $_model = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->_model = $this->getMockBuilder(\Magento\Framework\Translate\AbstractAdapter::class)
+        $this->_model = $this->getMockBuilder(AbstractAdapter::class)
             ->getMockForAbstractClass();
     }
 
@@ -32,7 +36,7 @@ class AdapterAbstractTest extends \PHPUnit\Framework\TestCase
     public function testSetLocale()
     {
         $this->assertInstanceOf(
-            \Magento\Framework\Translate\AbstractAdapter::class,
+            AbstractAdapter::class,
             $this->_model->setLocale('en_US')
         );
     }
@@ -42,6 +46,6 @@ class AdapterAbstractTest extends \PHPUnit\Framework\TestCase
      */
     public function testToString()
     {
-        $this->assertEquals(\Magento\Framework\Translate\Adapter::class, $this->_model->toString());
+        $this->assertEquals(Adapter::class, $this->_model->toString());
     }
 }

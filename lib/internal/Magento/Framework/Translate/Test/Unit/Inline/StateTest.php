@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,16 +6,17 @@
 
 namespace Magento\Framework\Translate\Test\Unit\Inline;
 
-use \Magento\Framework\Translate\Inline\State;
+use Magento\Framework\Translate\Inline\State;
+use PHPUnit\Framework\TestCase;
 
-class StateTest extends \PHPUnit\Framework\TestCase
+class StateTest extends TestCase
 {
     /**
      * @var State
      */
     protected $model;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->model = new State();
     }
