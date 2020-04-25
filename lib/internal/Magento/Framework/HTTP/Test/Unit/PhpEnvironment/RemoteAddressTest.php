@@ -1,23 +1,25 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\HTTP\Test\Unit\PhpEnvironment;
 
-use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for
  *
  * @see RemoteAddress
  */
-class RemoteAddressTest extends \PHPUnit\Framework\TestCase
+class RemoteAddressTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|HttpRequest
+     * @var MockObject|HttpRequest
      */
     protected $_request;
 
@@ -29,7 +31,7 @@ class RemoteAddressTest extends \PHPUnit\Framework\TestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_request = $this->getMockBuilder(HttpRequest::class)
             ->disableOriginalConstructor()
