@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -10,8 +10,10 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SortOrder;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Data\Collection\AbstractDb;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class SortingProcessorTest extends \PHPUnit\Framework\TestCase
+class SortingProcessorTest extends TestCase
 {
     /**
      * Return model
@@ -43,7 +45,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
 
         $model = $this->getModel($fieldMapping, $defaultOrders);
 
-        /** @var SortOrder|\PHPUnit_Framework_MockObject_MockObject $sortOrderOneMock */
+        /** @var SortOrder|MockObject $sortOrderOneMock */
         $sortOrderOneMock = $this->getMockBuilder(SortOrder::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -54,7 +56,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
             ->method('getDirection')
             ->willReturn($orderOneDirection);
 
-        /** @var SortOrder|\PHPUnit_Framework_MockObject_MockObject $sortOrderTwoMock */
+        /** @var SortOrder|MockObject $sortOrderTwoMock */
         $sortOrderTwoMock = $this->getMockBuilder(SortOrder::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -65,7 +67,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
             ->method('getDirection')
             ->willReturn($orderTwoDirection);
 
-        /** @var SortOrder|\PHPUnit_Framework_MockObject_MockObject $sortOrderThreeMock */
+        /** @var SortOrder|MockObject $sortOrderThreeMock */
         $sortOrderThreeMock = $this->getMockBuilder(SortOrder::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -76,7 +78,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
             ->method('getDirection')
             ->willReturn($orderThreeDirection);
 
-        /** @var SortOrder|\PHPUnit_Framework_MockObject_MockObject $sortOrderThreeMock */
+        /** @var SortOrder|MockObject $sortOrderThreeMock */
         $sortOrderFourMock = $this->getMockBuilder(SortOrder::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -86,7 +88,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
         $sortOrderFourMock->expects($this->never())
             ->method('getDirection');
 
-        /** @var SearchCriteriaInterface|\PHPUnit_Framework_MockObject_MockObject $searchCriteriaMock */
+        /** @var SearchCriteriaInterface|MockObject $searchCriteriaMock */
         $searchCriteriaMock = $this->getMockBuilder(SearchCriteriaInterface::class)
             ->getMock();
 
@@ -94,7 +96,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
             ->method('getSortOrders')
             ->willReturn([$sortOrderOneMock, $sortOrderTwoMock, $sortOrderThreeMock, $sortOrderFourMock]);
 
-        /** @var AbstractDb|\PHPUnit_Framework_MockObject_MockObject $collectionMock */
+        /** @var AbstractDb|MockObject $collectionMock */
         $collectionMock = $this->getMockBuilder(AbstractDb::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -132,7 +134,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
 
         $model = $this->getModel($fieldMapping, $defaultOrders);
 
-        /** @var SearchCriteriaInterface|\PHPUnit_Framework_MockObject_MockObject $searchCriteriaMock */
+        /** @var SearchCriteriaInterface|MockObject $searchCriteriaMock */
         $searchCriteriaMock = $this->getMockBuilder(SearchCriteriaInterface::class)
             ->getMock();
 
@@ -140,7 +142,7 @@ class SortingProcessorTest extends \PHPUnit\Framework\TestCase
             ->method('getSortOrders')
             ->willReturn([]);
 
-        /** @var AbstractDb|\PHPUnit_Framework_MockObject_MockObject $collectionMock */
+        /** @var AbstractDb|MockObject $collectionMock */
         $collectionMock = $this->getMockBuilder(AbstractDb::class)
             ->disableOriginalConstructor()
             ->getMock();

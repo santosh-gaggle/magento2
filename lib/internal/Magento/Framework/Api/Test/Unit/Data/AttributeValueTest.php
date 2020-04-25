@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,8 +6,9 @@
 namespace Magento\Framework\Api\Test\Unit\Data;
 
 use Magento\Framework\Api\AttributeValue;
+use PHPUnit\Framework\TestCase;
 
-class AttributeValueTest extends \PHPUnit\Framework\TestCase
+class AttributeValueTest extends TestCase
 {
     const ATTRIBUTE_CODE = 'ATTRIBUTE_CODE';
 

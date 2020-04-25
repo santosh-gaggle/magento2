@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -8,11 +8,8 @@ namespace Magento\Framework\Api\Test\Unit\Code\Generator;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
 
-/**
- * Class ExtensibleSample
- */
 class ExtensibleSample extends AbstractExtensibleModel implements
-    \Magento\Framework\Api\Test\Unit\Code\Generator\ExtensibleSampleInterface
+    ExtensibleSampleInterface
 {
     /**
      * {@inheritdoc}

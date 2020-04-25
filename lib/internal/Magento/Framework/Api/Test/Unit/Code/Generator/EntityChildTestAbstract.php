@@ -1,34 +1,39 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Api\Test\Unit\Code\Generator;
 
+use Magento\Framework\Code\Generator\ClassGenerator;
+use Magento\Framework\Code\Generator\DefinedClasses;
+use Magento\Framework\Code\Generator\EntityAbstract;
 use Magento\Framework\Code\Generator\Io;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class BuilderTest
  */
-abstract class EntityChildTestAbstract extends \PHPUnit\Framework\TestCase
+abstract class EntityChildTestAbstract extends TestCase
 {
     /**
-     * @var Io | \PHPUnit_Framework_MockObject_MockObject
+     * @var Io|MockObject
      */
     protected $ioObjectMock;
 
     /**
-     * @var \Magento\Framework\Code\Generator\EntityAbstract
+     * @var EntityAbstract
      */
     protected $generator;
 
     /**
-     * @var \Magento\Framework\Code\Generator\ClassGenerator | \PHPUnit_Framework_MockObject_MockObject
+     * @var ClassGenerator|MockObject
      */
     protected $classGenerator;
 
-    /** @var \PHPUnit_Framework_MockObject_MockObject | \Magento\Framework\Code\Generator\DefinedClasses */
+    /** @var MockObject|DefinedClasses */
     protected $definedClassesMock;
 
     /**
@@ -51,13 +56,13 @@ abstract class EntityChildTestAbstract extends \PHPUnit\Framework\TestCase
      */
     abstract protected function getOutputFileName();
 
-    protected function setUp()
+    protected function setUp(): void
     {
         require_once __DIR__ . '/Sample.php';
 
-        $this->ioObjectMock = $this->createMock(\Magento\Framework\Code\Generator\Io::class);
-        $this->classGenerator = $this->createMock(\Magento\Framework\Code\Generator\ClassGenerator::class);
-        $this->definedClassesMock = $this->getMockBuilder(\Magento\Framework\Code\Generator\DefinedClasses::class)
+        $this->ioObjectMock = $this->createMock(Io::class);
+        $this->classGenerator = $this->createMock(ClassGenerator::class);
+        $this->definedClassesMock = $this->getMockBuilder(DefinedClasses::class)
             ->disableOriginalConstructor()->getMock();
 
         $objectManager = new ObjectManager($this);

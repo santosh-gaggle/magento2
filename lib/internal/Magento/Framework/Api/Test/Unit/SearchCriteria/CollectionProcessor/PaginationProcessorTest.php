@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -8,14 +8,16 @@ namespace Magento\Framework\Api\Test\Unit\SearchCriteria\CollectionProcessor;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class PaginationProcessorTest extends \PHPUnit\Framework\TestCase
+class PaginationProcessorTest extends TestCase
 {
     public function testProcess()
     {
-        $model = new PaginationProcessor;
+        $model = new PaginationProcessor();
 
-        /** @var SearchCriteriaInterface|\PHPUnit_Framework_MockObject_MockObject $searchCriteriaMock */
+        /** @var SearchCriteriaInterface|MockObject $searchCriteriaMock */
         $searchCriteriaMock = $this->getMockBuilder(SearchCriteriaInterface::class)
             ->getMock();
         $searchCriteriaMock->expects($this->once())
@@ -25,7 +27,7 @@ class PaginationProcessorTest extends \PHPUnit\Framework\TestCase
             ->method('getPageSize')
             ->willReturn(33);
 
-        /** @var AbstractDb|\PHPUnit_Framework_MockObject_MockObject $searchCriteriarMock */
+        /** @var AbstractDb|MockObject $searchCriteriarMock */
         $collectionMock = $this->getMockBuilder(AbstractDb::class)
             ->disableOriginalConstructor()
             ->getMock();
