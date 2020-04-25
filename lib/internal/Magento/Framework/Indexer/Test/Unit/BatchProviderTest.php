@@ -1,22 +1,23 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Indexer\Test\Unit;
 
-use \Magento\Framework\DB\Adapter\AdapterInterface;
-use \Magento\Framework\DB\Select;
-use \Magento\Framework\Indexer\BatchProvider;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Select;
+use Magento\Framework\Indexer\BatchProvider;
+use PHPUnit\Framework\TestCase;
 
-class BatchProviderTest extends \PHPUnit\Framework\TestCase
+class BatchProviderTest extends TestCase
 {
     /**
      * @var BatchProvider
      */
     private $model;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->model = new BatchProvider();
     }

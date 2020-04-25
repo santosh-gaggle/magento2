@@ -1,28 +1,32 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Indexer\Test\Unit;
 
-use Magento\Framework\Indexer\GridStructure;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
+use Magento\Framework\Indexer\GridStructure;
+use Magento\Framework\Indexer\ScopeResolver\FlatScopeResolver;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class GridStructureTest extends \PHPUnit\Framework\TestCase
+class GridStructureTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\App\ResourceConnection|\PHPUnit_Framework_MockObject_MockObject
+     * @var ResourceConnection|MockObject
      */
     protected $resource;
 
     /**
-     * @var \Magento\Framework\Indexer\ScopeResolver\FlatScopeResolver|\PHPUnit_Framework_MockObject_MockObject
+     * @var FlatScopeResolver|MockObject
      */
     protected $flatScopeResolver;
 
     /**
-     * @var \Magento\Framework\DB\Adapter\AdapterInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var AdapterInterface|MockObject
      */
     protected $connection;
 
@@ -31,15 +35,15 @@ class GridStructureTest extends \PHPUnit\Framework\TestCase
      */
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->connection = $this->getMockBuilder(\Magento\Framework\DB\Adapter\AdapterInterface::class)
+        $this->connection = $this->getMockBuilder(AdapterInterface::class)
             ->getMock();
-        $this->resource = $this->getMockBuilder(\Magento\Framework\App\ResourceConnection::class)
+        $this->resource = $this->getMockBuilder(ResourceConnection::class)
             ->disableOriginalConstructor()
             ->getMock();
         $this->flatScopeResolver = $this->getMockBuilder(
-            \Magento\Framework\Indexer\ScopeResolver\FlatScopeResolver::class
+            FlatScopeResolver::class
         )
             ->disableOriginalConstructor()
             ->getMock();
@@ -86,7 +90,7 @@ class GridStructureTest extends \PHPUnit\Framework\TestCase
         $tableName = 'index_table';
         $idxName = 'idxName';
 
-        $table = $this->getMockBuilder(\Magento\Framework\DB\Ddl\Table::class)
+        $table = $this->getMockBuilder(Table::class)
             ->disableOriginalConstructor()
             ->getMock();
         $this->flatScopeResolver->expects($this->once())

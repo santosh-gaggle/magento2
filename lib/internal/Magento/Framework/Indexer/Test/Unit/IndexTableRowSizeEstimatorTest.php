@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,7 +6,10 @@
 
 namespace Magento\Framework\Indexer\Test\Unit;
 
-class IndexTableRowSizeEstimatorTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\Indexer\IndexTableRowSizeEstimator;
+use PHPUnit\Framework\TestCase;
+
+class IndexTableRowSizeEstimatorTest extends TestCase
 {
     /**
      * Test for estimateRowSize method
@@ -14,7 +17,7 @@ class IndexTableRowSizeEstimatorTest extends \PHPUnit\Framework\TestCase
     public function testEstimateRowSize()
     {
         $rowMemorySize = 100;
-        $model = new \Magento\Framework\Indexer\IndexTableRowSizeEstimator($rowMemorySize);
+        $model = new IndexTableRowSizeEstimator($rowMemorySize);
         $this->assertEquals($model->estimateRowSize(), $rowMemorySize);
     }
 }

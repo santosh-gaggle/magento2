@@ -1,20 +1,23 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Indexer\Test\Unit;
 
-class BatchTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\Indexer\SaveHandler\Batch;
+use PHPUnit\Framework\TestCase;
+
+class BatchTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\Indexer\SaveHandler\Batch
+     * @var Batch
      */
     private $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->object = new \Magento\Framework\Indexer\SaveHandler\Batch();
+        $this->object = new Batch();
     }
 
     /**
