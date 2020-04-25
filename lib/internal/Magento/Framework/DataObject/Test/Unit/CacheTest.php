@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,16 +6,19 @@
 
 namespace Magento\Framework\DataObject\Test\Unit;
 
-class CacheTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\DataObject\Cache;
+use PHPUnit\Framework\TestCase;
+
+class CacheTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\DataObject\Cache
+     * @var Cache
      */
     protected $cache;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->cache = new \Magento\Framework\DataObject\Cache();
+        $this->cache = new Cache();
     }
 
     public function testSaveWhenArgumentIsNotObject()
@@ -23,12 +26,10 @@ class CacheTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(false, $this->cache->save('string'));
     }
 
-    /**
-     * @expectedException \Magento\Framework\Exception\LocalizedException
-     * @expectedExceptionMessage Object already exists in registry (#1). Old object class: stdClass
-     */
     public function testSaveWhenObjectAlreadyExistsInRegistry()
     {
+        $this->expectException('Magento\Framework\Exception\LocalizedException');
+        $this->expectExceptionMessage('Object already exists in registry (#1). Old object class: stdClass');
         $object = new \stdClass();
         $hash = spl_object_hash($object);
         $newIdx = 'idx' . $hash;
@@ -53,12 +54,10 @@ class CacheTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($this->cache->delete('idx' . $hash));
     }
 
-    /**
-     * @expectedException \Magento\Framework\Exception\LocalizedException
-     * @expectedExceptionMessage The reference already exists: refName. New index: idx, old index: idx
-     */
     public function testReferenceWhenReferenceAlreadyExist()
     {
+        $this->expectException('Magento\Framework\Exception\LocalizedException');
+        $this->expectExceptionMessage('The reference already exists: refName. New index: idx, old index: idx');
         $refName = ['refName', 'refName'];
         $this->cache->reference($refName, 'idx');
     }
