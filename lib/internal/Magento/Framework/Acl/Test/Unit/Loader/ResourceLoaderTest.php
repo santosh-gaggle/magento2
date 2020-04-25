@@ -24,7 +24,7 @@ class ResourceLoaderTest extends TestCase
         /** @var $aclResource \Magento\Framework\Acl\AclResource */
         $aclResource = $this->createMock(AclResource::class);
 
-        /** @var \Magento\Framework\Acl $acl */
+        /** @var Acl $acl */
         $acl = $this->createPartialMock(Acl::class, ['addResource']);
         $acl->expects($this->exactly(2))->method('addResource');
         $acl->expects($this->at(0))->method('addResource')->with($aclResource, null)->will($this->returnSelf());
@@ -103,7 +103,7 @@ class ResourceLoaderTest extends TestCase
                 )
             );
 
-        /** @var \Magento\Framework\Acl $acl */
+        /** @var Acl $acl */
         $acl = $this->createPartialMock(Acl::class, ['addResource']);
 
         /** @var $loaderResource \Magento\Framework\Acl\Loader\ResourceLoader */
