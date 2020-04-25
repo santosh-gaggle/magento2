@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -8,8 +8,9 @@ namespace Magento\Framework\Amqp\Test\Unit\Topology;
 use Magento\Framework\Amqp\Topology\QueueInstaller;
 use Magento\Framework\MessageQueue\Topology\Config\QueueConfigItemInterface;
 use PhpAmqpLib\Channel\AMQPChannel;
+use PHPUnit\Framework\TestCase;
 
-class QueueInstallerTest extends \PHPUnit\Framework\TestCase
+class QueueInstallerTest extends TestCase
 {
     public function testInstall()
     {
