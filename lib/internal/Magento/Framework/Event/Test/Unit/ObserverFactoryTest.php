@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,17 +6,16 @@
 
 namespace Magento\Framework\Event\Test\Unit;
 
-use \Magento\Framework\Event\ObserverFactory;
+use Magento\Framework\Event\ObserverFactory;
+use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\Framework\ObjectManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-/**
- * Class ConfigTest
- *
- * @package Magento\Framework\Event
- */
-class ObserverFactoryTest extends \PHPUnit\Framework\TestCase
+class ObserverFactoryTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\ObjectManagerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ObjectManagerInterface|MockObject
      */
     protected $objectManagerMock;
 
@@ -25,10 +24,10 @@ class ObserverFactoryTest extends \PHPUnit\Framework\TestCase
      */
     protected $observerFactory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->objectManagerMock = $this->createPartialMock(
-            \Magento\Framework\ObjectManager\ObjectManager::class,
+            ObjectManager::class,
             ['get', 'create']
         );
         $this->observerFactory = new ObserverFactory($this->objectManagerMock);
