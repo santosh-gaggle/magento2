@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,15 +6,16 @@
 
 namespace Magento\Framework\Pricing\Test\Unit\Price;
 
-use \Magento\Framework\Pricing\Price\Pool;
+use Magento\Framework\Pricing\Price\Pool;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for Pool
  */
-class PoolTest extends \PHPUnit\Framework\TestCase
+class PoolTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\Pricing\Price\Pool
+     * @var Pool
      */
     protected $pool;
 
@@ -36,7 +37,7 @@ class PoolTest extends \PHPUnit\Framework\TestCase
     /**
      * Test setUp
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->prices = [
             'regular_price' => 'RegularPrice',
