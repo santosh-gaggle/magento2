@@ -1,10 +1,12 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Test WebAPI authentication helper.
  *
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Magento\Framework\Oauth\Test\Unit\Helper;
 
 use Magento\Framework\App\Request\Http;
