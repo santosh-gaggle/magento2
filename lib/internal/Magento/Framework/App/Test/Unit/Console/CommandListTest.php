@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -7,6 +7,8 @@
 namespace Magento\Framework\App\Test\Unit\Console;
 
 use Magento\Framework\Console\CommandList;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 
 /**
@@ -14,10 +16,10 @@ use Symfony\Component\Console\Command\Command;
  *
  * @see Magento\Framework\Console\CommandList
  */
-class CommandListTest extends \PHPUnit\Framework\TestCase
+class CommandListTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\Framework\Console\CommandList
+     * @var MockObject|CommandList
      */
     private $commandList;
 
@@ -26,7 +28,7 @@ class CommandListTest extends \PHPUnit\Framework\TestCase
      */
     private $testCommand;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->testCommand = new Command('Test');
         $commands = [

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,9 +6,10 @@
 
 namespace Magento\Framework\App\Test\Unit;
 
-use \Magento\Framework\App\SetupInfo;
+use Magento\Framework\App\SetupInfo;
+use PHPUnit\Framework\TestCase;
 
-class SetupInfoTest extends \PHPUnit\Framework\TestCase
+class SetupInfoTest extends TestCase
 {
     /**
      * A default fixture

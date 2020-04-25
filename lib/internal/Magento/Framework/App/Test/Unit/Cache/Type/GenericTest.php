@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -9,7 +9,16 @@
  */
 namespace Magento\Framework\App\Test\Unit\Cache\Type;
 
-class GenericTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\App\Cache\Type\Block;
+use Magento\Framework\App\Cache\Type\Collection;
+use Magento\Framework\App\Cache\Type\Config;
+use Magento\Framework\App\Cache\Type\FrontendPool;
+use Magento\Framework\App\Cache\Type\Layout;
+use Magento\Framework\App\Cache\Type\Translate;
+use Magento\Framework\Cache\FrontendInterface;
+use PHPUnit\Framework\TestCase;
+
+class GenericTest extends TestCase
 {
     /**
      * @param string $className
@@ -17,9 +26,9 @@ class GenericTest extends \PHPUnit\Framework\TestCase
      */
     public function testConstructor($className)
     {
-        $frontendMock = $this->createMock(\Magento\Framework\Cache\FrontendInterface::class);
+        $frontendMock = $this->createMock(FrontendInterface::class);
 
-        $poolMock = $this->createMock(\Magento\Framework\App\Cache\Type\FrontendPool::class);
+        $poolMock = $this->createMock(FrontendPool::class);
         /** @noinspection PhpUndefinedFieldInspection */
         $poolMock->expects(
             $this->atLeastOnce()
@@ -48,12 +57,12 @@ class GenericTest extends \PHPUnit\Framework\TestCase
     public static function constructorDataProvider()
     {
         return [
-            [\Magento\Framework\App\Cache\Type\Block::class],
-            [\Magento\Framework\App\Cache\Type\Collection::class],
-            [\Magento\Framework\App\Cache\Type\Config::class],
-            [\Magento\Framework\App\Cache\Type\Layout::class],
-            [\Magento\Framework\App\Cache\Type\Translate::class],
-            [\Magento\Framework\App\Cache\Type\Block::class]
+            [Block::class],
+            [Collection::class],
+            [Config::class],
+            [Layout::class],
+            [Translate::class],
+            [Block::class]
         ];
     }
 }

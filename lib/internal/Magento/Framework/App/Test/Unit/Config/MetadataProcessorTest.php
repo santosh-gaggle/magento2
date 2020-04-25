@@ -1,20 +1,21 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\App\Test\Unit\Config;
 
-use Magento\Framework\App\Config\MetadataProcessor;
-use Magento\Framework\App\Config\Initial;
 use Magento\Framework\App\Config\Data\ProcessorFactory;
 use Magento\Framework\App\Config\Data\ProcessorInterface;
-use \PHPUnit_Framework_MockObject_MockObject as Mock;
+use Magento\Framework\App\Config\Initial;
+use Magento\Framework\App\Config\MetadataProcessor;
+use PHPUnit\Framework\MockObject\MockObject as Mock;
+use PHPUnit\Framework\TestCase;
 
 /**
  * {@inheritdoc}
  */
-class MetadataProcessorTest extends \PHPUnit\Framework\TestCase
+class MetadataProcessorTest extends TestCase
 {
     /**
      * @var MetadataProcessor
@@ -32,14 +33,14 @@ class MetadataProcessorTest extends \PHPUnit\Framework\TestCase
     protected $_modelPoolMock;
 
     /**
-     * @var ProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ProcessorInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     protected $_backendModelMock;
 
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_modelPoolMock = $this->getMockBuilder(ProcessorFactory::class)
             ->disableOriginalConstructor()
@@ -56,7 +57,7 @@ class MetadataProcessorTest extends \PHPUnit\Framework\TestCase
                 ['some/config/path' => ['backendModel' => 'Custom_Backend_Model']]
             );
 
-        $this->_model = new \Magento\Framework\App\Config\MetadataProcessor(
+        $this->_model = new MetadataProcessor(
             $this->_modelPoolMock,
             $this->_initialConfigMock
         );

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -7,12 +7,13 @@ namespace Magento\Framework\App\Test\Unit\PageCache;
 
 use Magento\Framework\App\Http\Context;
 use Magento\Framework\App\PageCache\Identifier;
-use Magento\Framework\App\Response\Http;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class IdentifierTest extends \PHPUnit\Framework\TestCase
+class IdentifierTest extends TestCase
 {
     /**
      * Test value for cache vary string
@@ -20,17 +21,17 @@ class IdentifierTest extends \PHPUnit\Framework\TestCase
     const VARY = '123';
 
     /**
-     * @var \Magento\Framework\TestFramework\Unit\Helper\ObjectManager
+     * @var ObjectManager
      */
     private $objectManager;
 
     /**
-     * @var Context|\PHPUnit_Framework_MockObject_MockObject
+     * @var Context|MockObject
      */
     private $contextMock;
 
     /**
-     * @var HttpRequest|\PHPUnit_Framework_MockObject_MockObject
+     * @var HttpRequest|MockObject
      */
     private $requestMock;
 
@@ -40,14 +41,14 @@ class IdentifierTest extends \PHPUnit\Framework\TestCase
     private $model;
 
     /**
-     * @var Json|\PHPUnit_Framework_MockObject_MockObject
+     * @var Json|MockObject
      */
     private $serializerMock;
 
     /**
-     * @return \Magento\Framework\TestFramework\Unit\Helper\ObjectManager
+     * @return ObjectManager
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->objectManager = new ObjectManager($this);
         $this->contextMock = $this->getMockBuilder(Context::class)
@@ -80,7 +81,7 @@ class IdentifierTest extends \PHPUnit\Framework\TestCase
                 'serializer' => $this->serializerMock,
             ]
         );
-        return parent::setUp();
+        parent::setUp();
     }
 
     public function testSecureDifferentiator()

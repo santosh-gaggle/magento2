@@ -1,11 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\App\Test\Unit\DefaultPath;
 
-class DefaultPathTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\App\DefaultPath\DefaultPath;
+use PHPUnit\Framework\TestCase;
+
+class DefaultPathTest extends TestCase
 {
     /**
      * @param array $parts
@@ -15,7 +18,7 @@ class DefaultPathTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetPart($parts, $code, $result)
     {
-        $model = new \Magento\Framework\App\DefaultPath\DefaultPath($parts);
+        $model = new DefaultPath($parts);
         $this->assertEquals($result, $model->getPart($code));
     }
 

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,28 +6,30 @@
 
 namespace Magento\Framework\App\Test\Unit\View\Asset\MaterializationStrategy;
 
-use \Magento\Framework\App\View\Asset\MaterializationStrategy\Symlink;
-
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\View\Asset;
+use Magento\Framework\App\View\Asset\MaterializationStrategy\Symlink;
+use Magento\Framework\Filesystem\Directory\WriteInterface;
+use Magento\Framework\View\Asset\LocalInterface;
 
-class SymlinkTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+
+class SymlinkTest extends TestCase
 {
     /**
      * @var Symlink
      */
     private $symlinkPublisher;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->symlinkPublisher = new Symlink;
+        $this->symlinkPublisher = new Symlink();
     }
 
     public function testPublishFile()
     {
-        $rootDir = $this->getMockBuilder(\Magento\Framework\Filesystem\Directory\WriteInterface::class)
+        $rootDir = $this->getMockBuilder(WriteInterface::class)
             ->getMock();
-        $targetDir = $this->getMockBuilder(\Magento\Framework\Filesystem\Directory\WriteInterface::class)
+        $targetDir = $this->getMockBuilder(WriteInterface::class)
             ->getMock();
         $sourcePath = 'source/path/file';
         $destinationPath = 'destination/path/file';
@@ -48,7 +50,7 @@ class SymlinkTest extends \PHPUnit\Framework\TestCase
      */
     public function testIsSupported($path, $expectation)
     {
-        $asset = $this->getMockBuilder(\Magento\Framework\View\Asset\LocalInterface::class)
+        $asset = $this->getMockBuilder(LocalInterface::class)
             ->setMethods([])
             ->getMock();
         $asset->expects($this->once())

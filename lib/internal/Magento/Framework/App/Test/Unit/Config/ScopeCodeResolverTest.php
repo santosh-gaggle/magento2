@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -9,21 +9,23 @@ use Magento\Framework\App\Config\ScopeCodeResolver;
 use Magento\Framework\App\ScopeInterface;
 use Magento\Framework\App\ScopeResolverInterface;
 use Magento\Framework\App\ScopeResolverPool;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class ScopeCodeResolverTest extends \PHPUnit\Framework\TestCase
+class ScopeCodeResolverTest extends TestCase
 {
     /**
-     * @var ScopeResolverPool|\PHPUnit_Framework_MockObject_MockObject
+     * @var ScopeResolverPool|MockObject
      */
     private $scopeResolverPool;
 
     /**
-     * @var ScopeResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ScopeResolverInterface|MockObject
      */
     private $scopeResolver;
 
     /**
-     * @var ScopeInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ScopeInterface|MockObject
      */
     private $scope;
 
@@ -32,7 +34,7 @@ class ScopeCodeResolverTest extends \PHPUnit\Framework\TestCase
      */
     private $scopeCodeResolver;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->scopeResolverPool = $this->getMockBuilder(ScopeResolverPool::class)
             ->disableOriginalConstructor()

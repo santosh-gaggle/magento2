@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -7,8 +7,10 @@ namespace Magento\Framework\App\Test\Unit\Config;
 
 use Magento\Framework\App\Config\PreProcessorComposite;
 use Magento\Framework\App\Config\Spi\PreProcessorInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class PreProcessorCompositeTest extends \PHPUnit\Framework\TestCase
+class PreProcessorCompositeTest extends TestCase
 {
     /**
      * @var PreProcessorComposite
@@ -16,11 +18,11 @@ class PreProcessorCompositeTest extends \PHPUnit\Framework\TestCase
     private $model;
 
     /**
-     * @var PreProcessorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var PreProcessorInterface|MockObject
      */
     private $preProcessorMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->preProcessorMock = $this->getMockBuilder(PreProcessorInterface::class)
             ->getMockForAbstractClass();

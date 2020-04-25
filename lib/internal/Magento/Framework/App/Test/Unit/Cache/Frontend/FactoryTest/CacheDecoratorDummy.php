@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -9,7 +9,10 @@
  */
 namespace Magento\Framework\App\Test\Unit\Cache\Frontend\FactoryTest;
 
-class CacheDecoratorDummy extends \Magento\Framework\Cache\Frontend\Decorator\Bare
+use Magento\Framework\Cache\Frontend\Decorator\Bare;
+use Magento\Framework\Cache\FrontendInterface;
+
+class CacheDecoratorDummy extends Bare
 {
     /**
      * @var array
@@ -17,10 +20,10 @@ class CacheDecoratorDummy extends \Magento\Framework\Cache\Frontend\Decorator\Ba
     protected $_params;
 
     /**
-     * @param \Magento\Framework\Cache\FrontendInterface $frontend
+     * @param FrontendInterface $frontend
      * @param array $params
      */
-    public function __construct(\Magento\Framework\Cache\FrontendInterface $frontend, array $params)
+    public function __construct(FrontendInterface $frontend, array $params)
     {
         parent::__construct($frontend);
         $this->_params = $params;

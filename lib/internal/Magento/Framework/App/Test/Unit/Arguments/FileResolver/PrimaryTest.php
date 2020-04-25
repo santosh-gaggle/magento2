@@ -1,13 +1,18 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\App\Test\Unit\Arguments\FileResolver;
 
+use Magento\Framework\App\Arguments\FileResolver\Primary;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Config\FileIteratorFactory;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\Read;
+use PHPUnit\Framework\TestCase;
 
-class PrimaryTest extends \PHPUnit\Framework\TestCase
+class PrimaryTest extends TestCase
 {
     /**
      * @param array $fileList
@@ -17,9 +22,9 @@ class PrimaryTest extends \PHPUnit\Framework\TestCase
      */
     public function testGet(array $fileList, $scope, $filename)
     {
-        $directory = $this->createMock(\Magento\Framework\Filesystem\Directory\Read::class);
-        $filesystem = $this->createMock(\Magento\Framework\Filesystem::class);
-        $iteratorFactory = $this->createPartialMock(\Magento\Framework\Config\FileIteratorFactory::class, ['create']);
+        $directory = $this->createMock(Read::class);
+        $filesystem = $this->createMock(Filesystem::class);
+        $iteratorFactory = $this->createPartialMock(FileIteratorFactory::class, ['create']);
 
         $filesystem->expects(
             $this->once()
@@ -35,7 +40,7 @@ class PrimaryTest extends \PHPUnit\Framework\TestCase
 
         $iteratorFactory->expects($this->once())->method('create')->will($this->returnValue(true));
 
-        $model = new \Magento\Framework\App\Arguments\FileResolver\Primary($filesystem, $iteratorFactory);
+        $model = new Primary($filesystem, $iteratorFactory);
 
         $this->assertTrue($model->get($filename, $scope));
     }
