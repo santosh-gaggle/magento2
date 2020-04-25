@@ -1,10 +1,12 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Expired exception
  *
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Magento\Framework\Exception\Test\Unit\State;
 
 use Magento\Framework\Exception\State\ExpiredException;
