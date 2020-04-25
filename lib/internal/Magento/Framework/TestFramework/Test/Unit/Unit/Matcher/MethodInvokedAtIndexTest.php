@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -6,12 +6,14 @@
 namespace Magento\Framework\TestFramework\Test\Unit\Unit\Matcher;
 
 use Magento\Framework\TestFramework\Unit\Matcher\MethodInvokedAtIndex;
+use PHPUnit\Framework\MockObject\Invocation\ObjectInvocation;
+use PHPUnit\Framework\TestCase;
 
-class MethodInvokedAtIndexTest extends \PHPUnit\Framework\TestCase
+class MethodInvokedAtIndexTest extends TestCase
 {
     public function testMatches()
     {
-        $invocationObject = new \PHPUnit\Framework\MockObject\Invocation\ObjectInvocation(
+        $invocationObject = new ObjectInvocation(
             'ClassName',
             'ValidMethodName',
             [],
