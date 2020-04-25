@@ -1,13 +1,16 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Magento\Framework\Url\Test\Unit;
 
 use Magento\Framework\Url\Decoder;
 use Magento\Framework\Url\Encoder;
 use Magento\Framework\UrlInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DecoderTest extends TestCase
@@ -19,7 +22,7 @@ class DecoderTest extends TestCase
     public function testDecode()
     {
         $urlBuilderMock = $this->createMock(UrlInterface::class);
-        /** @var \Magento\Framework\UrlInterface|\PHPUnit_Framework_MockObject_MockObject $urlBuilderMock */
+        /** @var UrlInterface|MockObject $urlBuilderMock */
         $decoder = new Decoder($urlBuilderMock);
         $encoder = new Encoder();
 
