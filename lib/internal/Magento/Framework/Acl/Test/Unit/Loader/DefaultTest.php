@@ -1,25 +1,29 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Acl\Test\Unit\Loader;
 
-class DefaultTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\Acl;
+use Magento\Framework\Acl\Loader\DefaultLoader;
+use PHPUnit\Framework\TestCase;
+
+class DefaultTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\Acl\Loader\DefaultLoader
+     * @var DefaultLoader
      */
     protected $_model;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->_model = new \Magento\Framework\Acl\Loader\DefaultLoader();
+        $this->_model = new DefaultLoader();
     }
 
     public function testPopulateAclDoesntChangeAclObject()
     {
-        $aclMock = $this->createMock(\Magento\Framework\Acl::class);
+        $aclMock = $this->createMock(Acl::class);
         $aclMock->expects($this->never())->method('addRole');
         $aclMock->expects($this->never())->method('addResource');
         $aclMock->expects($this->never())->method('allow');

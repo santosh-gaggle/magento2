@@ -1,14 +1,17 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Framework\Acl\Test\Unit\AclResource;
 
-class TreeBuilderTest extends \PHPUnit\Framework\TestCase
+use Magento\Framework\Acl\AclResource\TreeBuilder;
+use PHPUnit\Framework\TestCase;
+
+class TreeBuilderTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\Acl\AclResource\TreeBuilder
+     * @var TreeBuilder
      */
     protected $_model;
 
@@ -19,9 +22,9 @@ class TreeBuilderTest extends \PHPUnit\Framework\TestCase
      */
     protected $_fixturePath;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->_model = new \Magento\Framework\Acl\AclResource\TreeBuilder();
+        $this->_model = new TreeBuilder();
         $this->_fixturePath = realpath(__DIR__ . '/../') . '/_files/';
     }
 
