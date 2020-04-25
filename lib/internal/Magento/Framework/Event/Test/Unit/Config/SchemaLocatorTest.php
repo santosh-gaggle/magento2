@@ -1,18 +1,21 @@
-<?php declare(strict_types=1);
+<?php
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Magento\Framework\Event\Test\Unit\Config;
 
-use Magento\Framework\App\ResourceConnection\Config\SchemaLocator;
+use Magento\Framework\App\ResourceConnection\Config\SchemaLocator as SchemaLocatorConfigResourceModel;
 use Magento\Framework\Config\Dom\UrnResolver;
+use Magento\Framework\Event\Config\SchemaLocator;
 use PHPUnit\Framework\TestCase;
 
 class SchemaLocatorTest extends TestCase
 {
     /**
-     * @var SchemaLocator
+     * @var SchemaLocatorConfigResourceModel
      */
     protected $model;
 
@@ -26,7 +29,7 @@ class SchemaLocatorTest extends TestCase
     {
         $this->urnResolver = new UrnResolver();
         $this->urnResolverMock = $this->createMock(UrnResolver::class);
-        $this->model = new \Magento\Framework\Event\Config\SchemaLocator($this->urnResolverMock);
+        $this->model = new SchemaLocator($this->urnResolverMock);
     }
 
     public function testGetSchema()
